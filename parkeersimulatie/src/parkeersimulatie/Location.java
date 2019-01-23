@@ -1,3 +1,4 @@
+package parkeersimulatie;
 
 public class Location {
 
