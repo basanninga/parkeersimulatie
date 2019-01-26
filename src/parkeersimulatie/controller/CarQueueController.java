@@ -19,12 +19,12 @@ public class CarQueueController extends Controller {
 
     private Simulator simulator;
 
-    int weekDayArrivals = 100; // average number of arriving cars per hour
-    int weekendArrivals = 200; // average number of arriving cars per hour
-    int weekDayPassArrivals = 50; // average number of arriving cars per hour
-    int weekendPassArrivals = 5; // average number of arriving cars per hour
+    int weekDayArrivals = 0; // average number of arriving cars per hour
+    int weekendArrivals = 0; // average number of arriving cars per hour
+    int weekDayPassArrivals = 0; // average number of arriving cars per hour
+    int weekendPassArrivals = 0; // average number of arriving cars per hour
 
-    int enterSpeed = 3; // number of cars that can enter per minute
+    int enterSpeed = 6; // number of cars that can enter per minute
     int paymentSpeed = 7; // number of cars that can pay per minute
     int exitSpeed = 5; // number of cars that can leave per minute
 
@@ -35,6 +35,73 @@ public class CarQueueController extends Controller {
         entrancePassQueue = new CarQueue();
         paymentCarQueue = new CarQueue();
         exitCarQueue = new CarQueue();
+
+    }
+
+    public void setArrivals(){
+        //Het wordt druk
+        if (simulator.getTimeController().getHour() > 12 && simulator.getTimeController().getHour() < 18) {
+            switch (simulator.getTimeController().getDay()) {
+                case 0:
+                    weekDayArrivals = 100;
+                    weekDayPassArrivals = 20;
+                    break;
+                case 1:
+                    weekDayArrivals = 100;
+                    weekDayPassArrivals = 20;
+                    break;
+                case 2:
+                    weekDayArrivals = 150;
+                    weekDayPassArrivals = 35;
+                    break;
+                case 3:
+                    weekDayArrivals = 175;
+                    weekDayPassArrivals = 40;
+                    break;
+                case 4:
+                    weekDayArrivals = 225;
+                    weekDayPassArrivals = 50;
+                    break;
+                case 5: weekendArrivals = 350;
+                        weekendPassArrivals = 100;
+                        break;
+                case 6: weekendArrivals = 275;
+                        weekendPassArrivals = 75;
+                        break;
+
+            }
+        //Het wordt rustig
+        }else{
+            switch (simulator.getTimeController().getDay()) {
+                case 0:
+                    weekDayArrivals = 60;
+                    weekDayPassArrivals = 15;
+                    break;
+                case 1:
+                    weekDayArrivals = 60;
+                    weekDayPassArrivals = 15;
+                    break;
+                case 2:
+                    weekDayArrivals = 90;
+                    weekDayPassArrivals = 18;
+                    break;
+                case 3:
+                    weekDayArrivals = 125;
+                    weekDayPassArrivals = 20;
+                    break;
+                case 4:
+                    weekDayArrivals = 150;
+                    weekDayPassArrivals = 35;
+                    break;
+                case 5: weekendArrivals = 200;
+                        weekendPassArrivals = 40;
+                    break;
+                case 6: weekendArrivals = 60;
+                        weekendPassArrivals = 15;
+                    break;
+
+            }
+        }
     }
 
     @Override

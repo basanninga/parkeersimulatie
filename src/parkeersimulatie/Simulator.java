@@ -13,12 +13,13 @@ public class Simulator {
     private TimeController timeController;
 
 
-    private int tickPause = 100;
+    private int tickPause = 1;
 
     public Simulator() {
         carController = new CarController(3, 6, 30);
         simulatorFrame = new SimulatorFrame(this);
         timeController = new TimeController();
+
 
         simulatorController = new CarQueueController(this);
     }
@@ -37,13 +38,14 @@ public class Simulator {
 
 
     public void run() {
-        for (int i = 0; i < 10000; i++) {
+        while (true) {
             tick();
         }
     }
 
     private void tick() {
         timeController.advanceTime();
+        simulatorController.setArrivals();
         simulatorController.handleExit();
         simulatorController.updateViews();
         // Pause.
