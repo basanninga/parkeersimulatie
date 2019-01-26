@@ -39,7 +39,7 @@ public class CarQueueController extends Controller {
     }
 
     public void setArrivals(){
-        //Het wordt druk
+        //Het wordt
         if (simulator.getTimeController().getHour() > 12 && simulator.getTimeController().getHour() < 18) {
             switch (simulator.getTimeController().getDay()) {
                 case 0:
