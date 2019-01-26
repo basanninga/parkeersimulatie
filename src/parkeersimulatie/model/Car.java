@@ -1,8 +1,10 @@
-package parkeersimulatie;
+package parkeersimulatie.model;
+
+import mvc.Model;
 
 import java.awt.*;
 
-public abstract class Car {
+public abstract class Car extends Model {
 
     private Location location;
     private int minutesLeft;
@@ -31,7 +33,7 @@ public abstract class Car {
     public void setMinutesLeft(int minutesLeft) {
         this.minutesLeft = minutesLeft;
     }
-    
+
     public boolean getIsPaying() {
         return isPaying;
     }
@@ -51,6 +53,6 @@ public abstract class Car {
     public void tick() {
         minutesLeft--;
     }
-    
+
     public abstract Color getColor();
 }
