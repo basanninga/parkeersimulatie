@@ -35,7 +35,7 @@ public class TickView extends View implements ChangeListener {
         slider.addChangeListener(e -> {
 
             value = ((JSlider) e.getSource()).getValue();
-            System.out.println(value);
+            value = 100 - value;
             simulator.tickPause = value;
 
         });

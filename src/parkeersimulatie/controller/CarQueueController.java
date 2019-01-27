@@ -167,6 +167,7 @@ public class CarQueueController extends Controller {
             // TODO Handle payment.
             carLeavesSpot(car);
             i++;
+
         }
     }
 
