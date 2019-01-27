@@ -30,6 +30,7 @@ public class TickView extends View implements ChangeListener {
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
 
+        //verander de tickView
         slider.setLabelTable(slider.createStandardLabels(10));
         slider.addChangeListener(e -> {
 
