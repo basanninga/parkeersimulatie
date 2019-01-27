@@ -17,6 +17,10 @@ public class TimeController extends Controller {
         return day;
     }
 
+    public int getHour(){
+        return hour;
+    }
+
     public void advanceTime() {
         // Advance the time by one minute.
         minute++;
@@ -31,6 +35,8 @@ public class TimeController extends Controller {
         while (day > 6) {
             day -= 7;
         }
+
+        System.out.println(day + " " + hour + ":" + minute);
     }
 
 

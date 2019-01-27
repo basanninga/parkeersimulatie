@@ -3,6 +3,7 @@ package parkeersimulatie;
 import parkeersimulatie.controller.CarController;
 import parkeersimulatie.controller.CarQueueController;
 import parkeersimulatie.controller.TimeController;
+import parkeersimulatie.view.TickView;
 
 public class Simulator {
 
@@ -11,17 +12,22 @@ public class Simulator {
     private CarQueueController simulatorController;
     private CarController carController;
     private TimeController timeController;
+    private TickView tickView;
 
 
-    private int tickPause = 100;
+    public int tickPause = 50;
 
     public Simulator() {
         carController = new CarController(3, 6, 30);
         simulatorFrame = new SimulatorFrame(this);
         timeController = new TimeController();
+        tickView = new TickView(this);
+
+
 
         simulatorController = new CarQueueController(this);
     }
+
 
     public SimulatorFrame getSimulatorFrame() {
         return simulatorFrame;
@@ -36,14 +42,20 @@ public class Simulator {
     }
 
 
+
+
+
     public void run() {
-        for (int i = 0; i < 10000; i++) {
+        while (true) {
             tick();
+
+
         }
     }
 
     private void tick() {
         timeController.advanceTime();
+        simulatorController.setArrivals();
         simulatorController.handleExit();
         simulatorController.updateViews();
         // Pause.
