@@ -1,5 +1,7 @@
 package parkeersimulatie.Main;
 
+import parkeersimulatie.controller.AbstractController;
+import parkeersimulatie.controller.Controller;
 import parkeersimulatie.logic.Time;
 import parkeersimulatie.logic.CarPark;
 import parkeersimulatie.view.AbstractView;
@@ -16,8 +18,10 @@ public class Simulator extends JFrame{
     private CarPark carPark;
     private AbstractView carParkView;
 
+    private AbstractController controller;
 
-    public int tickPause = 50;
+
+    private int tickPause;
 
     public Simulator() {
         time = new Time();
@@ -25,15 +29,19 @@ public class Simulator extends JFrame{
 
         carParkView = new CarParkView(carPark);
 
+        controller = new Controller(carPark);
+
         Container contentPane = getContentPane();
-        contentPane.add(carParkView, BorderLayout.CENTER);
+        contentPane.setLayout(new FlowLayout());
+        contentPane.add(carParkView);
+        contentPane.add(controller);
         pack();
         setVisible(true);
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-
         carParkView.updateView();
+
 
 
         //simulatorController = new CarQueueController(this);
@@ -42,8 +50,6 @@ public class Simulator extends JFrame{
     public void run() {
         while (true) {
             tick();
-
-
         }
     }
 
@@ -54,7 +60,7 @@ public class Simulator extends JFrame{
         carPark.updateViews();
         // Pause.
         try {
-            Thread.sleep(tickPause);
+            Thread.sleep(tickPause = ((Controller) controller).getTickSpeed());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

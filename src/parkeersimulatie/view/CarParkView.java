@@ -1,6 +1,7 @@
 package parkeersimulatie.view;
 
 import parkeersimulatie.Main.Simulator;
+import parkeersimulatie.logic.AbstractModel;
 import parkeersimulatie.logic.Car;
 import parkeersimulatie.logic.CarPark;
 import parkeersimulatie.logic.Location;
@@ -14,9 +15,6 @@ public class CarParkView extends AbstractView {
 
     private Simulator simulator;
 
-    /**
-     * Constructor for objects of class CarPark
-     */
     public CarParkView(CarPark model) {
         super(model);
         size = new Dimension(0, 0);
@@ -24,17 +22,12 @@ public class CarParkView extends AbstractView {
     }
 
 
-    /**
-     * Overridden. Tell the GUI manager how big we would like to be.
-     */
+
     public Dimension getPreferredSize() {
         return new Dimension(800, 500);
     }
 
-    /**
-     * Overriden. The car park view component needs to be redisplayed. Copy the
-     * internal image to screen.
-     */
+
     public void paintComponent(Graphics g) {
         if (carParkImage == null) {
             return;
@@ -73,9 +66,7 @@ public class CarParkView extends AbstractView {
         repaint();
     }
 
-    /**
-     * Paint a place on this car park view in a given color.
-     */
+
     private void drawPlace(Graphics graphics, Location location, Color color) {
         graphics.setColor(color);
         graphics.fillRect(
