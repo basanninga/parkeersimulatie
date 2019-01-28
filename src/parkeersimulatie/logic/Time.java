@@ -1,15 +1,13 @@
-package parkeersimulatie.controller;
+package parkeersimulatie.logic;
 
-import mvc.Controller;
-import mvc.View;
 
-public class TimeController extends Controller {
+public class Time extends AbstractModel {
 
     private int day = 0;
     private int hour = 0;
     private int minute = 0;
 
-    public TimeController() {
+    public Time() {
 
     }
 
@@ -17,7 +15,7 @@ public class TimeController extends Controller {
         return day;
     }
 
-    public int getHour(){
+    public int getHour() {
         return hour;
     }
 
@@ -37,11 +35,7 @@ public class TimeController extends Controller {
         }
 
         System.out.println(day + " " + hour + ":" + minute);
-    }
 
 
-    @Override
-    protected boolean event(View view, int event_id) {
-        return false;
     }
 }

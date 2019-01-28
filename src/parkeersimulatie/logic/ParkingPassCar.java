@@ -1,4 +1,4 @@
-package parkeersimulatie.model;
+package parkeersimulatie.logic;
 
 
 import java.util.Random;

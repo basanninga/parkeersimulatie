@@ -1,11 +1,11 @@
-package parkeersimulatie.model;
+package parkeersimulatie.logic;
 
-import mvc.Model;
+
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class CarQueue extends Model {
+public class CarQueue extends AbstractModel {
     private Queue<Car> queue = new LinkedList<>();
 
     public boolean addCar(Car car) {

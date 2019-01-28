@@ -1,14 +1,13 @@
 package parkeersimulatie.view;
 
-import mvc.Model;
-import mvc.View;
-import parkeersimulatie.Simulator;
-import parkeersimulatie.model.Car;
-import parkeersimulatie.model.Location;
+import parkeersimulatie.Main.Simulator;
+import parkeersimulatie.logic.Car;
+import parkeersimulatie.logic.CarPark;
+import parkeersimulatie.logic.Location;
 
 import java.awt.*;
 
-public class CarParkView extends View {
+public class CarParkView extends AbstractView {
 
     private Dimension size;
     private Image carParkImage;
@@ -18,16 +17,12 @@ public class CarParkView extends View {
     /**
      * Constructor for objects of class CarPark
      */
-    public CarParkView(Simulator simulator) {
+    public CarParkView(CarPark model) {
+        super(model);
         size = new Dimension(0, 0);
 
-        this.simulator = simulator;
     }
 
-    @Override
-    protected void update(Model model) {
-        //
-    }
 
     /**
      * Overridden. Tell the GUI manager how big we would like to be.
@@ -57,16 +52,19 @@ public class CarParkView extends View {
 
     public void updateView() {
         // Create a new car park image if the size has changed.
+
+        CarPark carPark = (CarPark) super.model;
+
         if (!size.equals(getSize())) {
             size = getSize();
             carParkImage = createImage(size.width, size.height);
         }
         Graphics graphics = carParkImage.getGraphics();
-        for(int floor = 0; floor < simulator.getCarController().getNumberOfFloors(); floor++) {
-            for(int row = 0; row < simulator.getCarController().getNumberOfRows(); row++) {
-                for(int place = 0; place < simulator.getCarController().getNumberOfPlaces(); place++) {
+        for(int floor = 0; floor < carPark.getNumberOfFloors(); floor++) {
+            for(int row = 0; row < carPark.getNumberOfRows(); row++) {
+                for(int place = 0; place < carPark.getNumberOfPlaces(); place++) {
                     Location location = new Location(floor, row, place);
-                    Car car = simulator.getCarController().getCarAt(location);
+                    Car car = carPark.getCarAt(location);
                     Color color = car == null ? Color.white : car.getColor();
                     drawPlace(graphics, location, color);
                 }

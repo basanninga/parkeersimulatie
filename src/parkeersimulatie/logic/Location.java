@@ -1,8 +1,7 @@
-package parkeersimulatie.model;
+package parkeersimulatie.logic;
 
-import mvc.Model;
 
-public class Location extends Model {
+public class Location extends AbstractModel {
 
     private int floor;
     private int row;

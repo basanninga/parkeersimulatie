@@ -1,8 +1,9 @@
+/*
 package parkeersimulatie.view;
 
 import mvc.Model;
 import mvc.View;
-import parkeersimulatie.Simulator;
+import parkeersimulatie.Main.Simulator;
 
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
@@ -20,7 +21,9 @@ public class TickView extends View implements ChangeListener {
 
         this.simulator = simulator;
 
-        /*this.setLayout(new BorderLayout());*/
+        */
+/*this.setLayout(new BorderLayout());*//*
+
         setLayout(new GridLayout(2, 1));
 
         slider = new JSlider(JSlider.HORIZONTAL, 0, 100, 50);
@@ -56,3 +59,4 @@ public class TickView extends View implements ChangeListener {
 
     }
 }
+*/

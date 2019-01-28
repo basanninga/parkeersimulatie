@@ -1,10 +1,9 @@
-package parkeersimulatie.model;
+package parkeersimulatie.logic;
 
-import mvc.Model;
 
 import java.awt.*;
 
-public abstract class Car extends Model {
+public abstract class Car extends AbstractModel {
 
     private Location location;
     private int minutesLeft;

@@ -1,6 +1,8 @@
-package parkeersimulatie;
+package parkeersimulatie.Runner;
 
-public class Main {
+import parkeersimulatie.Main.Simulator;
+
+public class Runner {
 
 	public static void main(String[] args) {
 		Simulator sim = new Simulator();
