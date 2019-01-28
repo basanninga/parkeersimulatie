@@ -21,7 +21,7 @@ public class Simulator extends JFrame{
     private AbstractController controller;
 
 
-    public static int tickPause;
+    public static int tickPause = 100;
 
     public Simulator() {
         time = new Time();
