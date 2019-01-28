@@ -21,7 +21,7 @@ public class Simulator extends JFrame{
     private AbstractController controller;
 
 
-    private int tickPause;
+    public static int tickPause;
 
     public Simulator() {
         time = new Time();
@@ -60,7 +60,7 @@ public class Simulator extends JFrame{
         carPark.updateViews();
         // Pause.
         try {
-            Thread.sleep(tickPause = ((Controller) controller).getTickSpeed());
+            Thread.sleep(tickPause);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

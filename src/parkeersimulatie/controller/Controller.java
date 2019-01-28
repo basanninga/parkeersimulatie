@@ -1,4 +1,5 @@
 package parkeersimulatie.controller;
+import parkeersimulatie.Main.Simulator;
 import parkeersimulatie.logic.*;
 
 import javax.swing.*;
@@ -14,27 +15,36 @@ public class Controller extends AbstractController implements ActionListener {
         super(model);
 
         tickLabel = new JLabel("speed");
-        tickField = new JTextField("", 5);
+        add(tickLabel);
 
+        tickField = new JTextField("", 5);
         tickField.addActionListener(this);
 
-        add(tickLabel);
         add(tickField);
 
     }
 
+    private void tickSpeed(){
 
-    public void actionPerformed(ActionEvent e){
-        if(e.getSource() == tickField){
+        try{
+            int speed = Integer.parseInt(tickField.getText());
 
+            Simulator.tickPause = speed;
 
-            tickSpeed = Integer.parseInt(tickField.getText());
+        } catch (NumberFormatException e){
+            // TODO notify user that the field is not a number!
         }
     }
 
-    public int getTickSpeed(){
-        return tickSpeed;
+
+
+
+    public void actionPerformed(ActionEvent event){
+        if(event.getSource() == tickField){
+            this.tickSpeed();
+        }
     }
+
 
 
 }
