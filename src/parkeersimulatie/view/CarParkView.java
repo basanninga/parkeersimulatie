@@ -6,6 +6,7 @@ import parkeersimulatie.logic.Car;
 import parkeersimulatie.logic.CarPark;
 import parkeersimulatie.logic.Location;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class CarParkView extends AbstractView {
@@ -13,11 +14,17 @@ public class CarParkView extends AbstractView {
     private Dimension size;
     private Image carParkImage;
 
+
+    private JLabel current;
+
     private Simulator simulator;
 
     public CarParkView(CarPark model) {
         super(model);
         size = new Dimension(0, 0);
+
+
+
 
     }
 

@@ -1,6 +1,8 @@
 package parkeersimulatie.logic;
 
 
+import java.util.Objects;
+
 public class Time extends AbstractModel {
 
     private int day = 0;
@@ -37,5 +39,9 @@ public class Time extends AbstractModel {
         System.out.println(day + " " + hour + ":" + minute);
 
 
+    }
+
+    public String getClock(){
+        return hour + ":" + minute;
     }
 }

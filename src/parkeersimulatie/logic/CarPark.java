@@ -1,6 +1,7 @@
 package parkeersimulatie.logic;
 
 
+import javax.swing.*;
 import java.util.Random;
 
 public final class CarPark extends AbstractModel {
@@ -16,11 +17,15 @@ public final class CarPark extends AbstractModel {
     private static final String AD_HOC = "1";
     private static final String PASS = "2";
 
+    private static int totalMinutes;
+    private static int stayMinutes;
+
     private CarQueue entranceCarQueue;
     private CarQueue entrancePassQueue;
     private CarQueue paymentCarQueue;
     private CarQueue exitCarQueue;
     public double profit;
+
 
 
     int weekDayArrivals = 0; // average number of arriving cars per hour
@@ -33,6 +38,8 @@ public final class CarPark extends AbstractModel {
     int exitSpeed = 5; // number of cars that can leave per minute
 
     public CarPark (int numberOfFloors, int numberOfRows, int numberOfPlaces, Time time){
+
+
 
         this.time = time;
 
@@ -240,6 +247,7 @@ public final class CarPark extends AbstractModel {
             Location freeLocation = getFirstFreeLocation();
             setCarAt(freeLocation, car);
             i++;
+            stayMinutes = (stayMinutes + car.getStayMinutes());
 
         }
     }
@@ -263,6 +271,7 @@ public final class CarPark extends AbstractModel {
         int i = 0;
         while (paymentCarQueue.carsInQueue() > 0 && i < paymentSpeed) {
             Car car = paymentCarQueue.removeCar();
+            totalMinutes = (totalMinutes + car.getStayMinutes());
             // TODO Handle payment.
             carLeavesSpot(car);
             i++;
@@ -273,7 +282,8 @@ public final class CarPark extends AbstractModel {
         // Let cars leave.
         int i = 0;
         while (exitCarQueue.carsInQueue() > 0 && i < exitSpeed) {
-            exitCarQueue.removeCar();
+            Car car = exitCarQueue.removeCar();
+            totalMinutes = (totalMinutes + car.getStayMinutes());
             i++;
         }
     }
@@ -328,6 +338,18 @@ public final class CarPark extends AbstractModel {
 
     public int getNumberOfOpenSpots() {
         return numberOfOpenSpots;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public int getTotalMinutes() {
+        return totalMinutes;
+    }
+
+    public int getStayMinutes() {
+        return stayMinutes;
     }
 
 

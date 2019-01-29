@@ -7,6 +7,7 @@ public abstract class Car extends AbstractModel {
 
     private Location location;
     private int minutesLeft;
+    private int stayMinutes;
     private boolean isPaying;
     private boolean hasToPay;
 
@@ -14,11 +15,16 @@ public abstract class Car extends AbstractModel {
      * Constructor for objects of class Car
      */
     public Car() {
+        this.stayMinutes = minutesLeft;
 
     }
 
     public Location getLocation() {
         return location;
+    }
+
+    public int getStayMinutes() {
+        return stayMinutes;
     }
 
     public void setLocation(Location location) {

@@ -13,7 +13,7 @@ import javax.swing.*;
  * @author Koen Hendriks
  * @version 0.1 (04-04-2016)
  */
-public abstract class AbstractView extends JPanel
+public class AbstractView extends JPanel
 {
     // all views have a certain model
     protected AbstractModel model;
@@ -28,7 +28,7 @@ public abstract class AbstractView extends JPanel
         model.addView(this);
 
         // we use absolute positioning so we can set the layout to null
-        setLayout(null);
+        //setLayout(null);
     }
 
     public void updateView() {

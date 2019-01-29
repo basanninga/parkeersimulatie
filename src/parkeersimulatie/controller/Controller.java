@@ -12,18 +12,22 @@ public class Controller extends AbstractController implements ActionListener {
     private JTextField tickField;
     private JLabel tickLabel;
 
-    private int tickSpeed = 100;
+    private JLabel current;
+
     public Controller(AbstractModel model) {
         super(model);
+
 
         tickLabel = new JLabel("speed");
         add(tickLabel);
 
-        tickField = new JTextField("", 5);
+        tickField = new JTextField("100", 5);
         tickField.addActionListener(this);
-
-
         add(tickField);
+
+
+
+
 
     }
 
