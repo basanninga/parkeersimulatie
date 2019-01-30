@@ -15,8 +15,6 @@ import java.awt.*;
 
 public class Simulator extends JFrame{
 
-
-
     private Time time;
     private CarPark carPark;
     private AbstractView carParkView;

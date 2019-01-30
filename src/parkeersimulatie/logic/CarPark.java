@@ -344,8 +344,16 @@ public final class CarPark extends AbstractModel {
         return time;
     }
 
+    public static void setTotalMinutes(int totalMinutes) {
+        CarPark.totalMinutes = totalMinutes;
+    }
+
     public int getTotalMinutes() {
         return totalMinutes;
+    }
+
+    public static void setStayMinutes(int stayMinutes) {
+        CarPark.stayMinutes = stayMinutes;
     }
 
     public int getStayMinutes() {

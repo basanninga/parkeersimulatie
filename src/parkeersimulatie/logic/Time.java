@@ -42,6 +42,37 @@ public class Time extends AbstractModel {
     }
 
     public String getClock(){
-        return hour + ":" + minute;
+        String hourString = Objects.toString(hour);
+        String miniuteString = Objects.toString(minute);;
+        if(hour< 10){
+            hourString = "0" + hourString;
+
+        }
+        if(minute < 10){
+            miniuteString = "0" + miniuteString;
+        }
+
+        return hourString + ":" + miniuteString;
+    }
+
+    public String getDayString(){
+        String dayString = "";
+        switch (day){
+            case 0: dayString = "maandag";
+                    break;
+            case 1: dayString = "disndag";
+                break;
+            case 2: dayString = "woensdag";
+                break;
+            case 3: dayString = "donderdag";
+                break;
+            case 4: dayString = "vrijdag";
+                break;
+            case 5: dayString = "zaterdag";
+                break;
+            case 6: dayString = "zondag";
+                break;
+        }
+        return dayString;
     }
 }

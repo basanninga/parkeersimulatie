@@ -16,6 +16,8 @@ public abstract class AbstractModel
 
     public AbstractModel() {
         this.views = new ArrayList<>();
+
+
     }
 
 
