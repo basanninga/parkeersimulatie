@@ -5,10 +5,7 @@ import parkeersimulatie.controller.Controller;
 import parkeersimulatie.logic.Car;
 import parkeersimulatie.logic.Time;
 import parkeersimulatie.logic.CarPark;
-import parkeersimulatie.view.AbstractView;
-import parkeersimulatie.view.CarParkView;
-import parkeersimulatie.view.StatsView;
-import parkeersimulatie.view.TimeView;
+import parkeersimulatie.view.*;
 
 
 import javax.swing.*;
@@ -23,6 +20,7 @@ public class Simulator extends JFrame{
     private AbstractView carParkView;
     private AbstractView statsView;
     private AbstractView timeView;
+    private AbstractView carQueueView;
 
     private AbstractController controller;
 
@@ -36,6 +34,7 @@ public class Simulator extends JFrame{
         this.carParkView = new CarParkView(carPark);
         this.statsView = new StatsView(carPark);
         this.timeView = new TimeView(carPark);
+        this.carQueueView = new CarQueueView(carPark);
 
 
         this.controller = new Controller(carPark);
@@ -47,18 +46,21 @@ public class Simulator extends JFrame{
         SCREEN.getContentPane().add(carParkView);
         SCREEN.getContentPane().add(statsView);
         SCREEN.getContentPane().add(timeView);
+        SCREEN.getContentPane().add(carQueueView);
 
         SCREEN.getContentPane().add(controller);
 
-        carParkView.setBounds(260,30,800,330);
+        carParkView.setBounds(260,90,800,330);
         statsView.setBounds(30,200,150,120);
         timeView.setBounds(1100,200,150,120);
+        carQueueView.setBounds(60,20,1200,40);
 
 
         controller.setBounds(30,320,910,90);
 
         statsView.setBorder(BorderFactory.createLineBorder(Color.black));
         timeView.setBorder(BorderFactory.createLineBorder(Color.black));
+        carQueueView.setBorder(BorderFactory.createLineBorder(Color.black));
 
         SCREEN.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 

@@ -55,6 +55,7 @@ public final class CarPark extends AbstractModel {
         paymentCarQueue = new CarQueue();
         exitCarQueue = new CarQueue();
 
+
     }
 
     public Car getCarAt(Location location) {
@@ -76,6 +77,25 @@ public final class CarPark extends AbstractModel {
             return true;
         }
         return false;
+    }
+
+    public int getEntranceCarQueue(){
+
+        return entranceCarQueue.carsInQueue();
+    }
+
+    public int getPaymentCarQueue(){
+
+        return paymentCarQueue.carsInQueue();
+    }
+
+    public int getExitCarQueue(){
+
+        return exitCarQueue.carsInQueue();
+    }
+
+    public int getEntrancePassCarQueue(){
+        return entrancePassQueue.carsInQueue();
     }
 
     public Car removeCarAt(Location location) {
