@@ -1,12 +1,9 @@
 package parkeersimulatie.view;
 
-
 import parkeersimulatie.logic.AbstractModel;
 import parkeersimulatie.logic.CarPark;
 import parkeersimulatie.logic.Time;
-
 import javax.swing.*;
-import java.util.Objects;
 
 public class TimeView extends AbstractView {
 

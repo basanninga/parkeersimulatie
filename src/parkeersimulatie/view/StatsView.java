@@ -119,7 +119,7 @@ public class StatsView extends AbstractView {
 
         current.setText(this.euro + (this.currentRevenue));
         expected.setText(this.euro + (this.expectedRevenue));
-        yesterday.setText(Objects.toString(this.euro + yesterdayRevenue));
+        yesterday.setText(this.euro + yesterdayRevenue);
         total.setText(this.euro + (this.totalRevenue));
 
         setVisible(true);

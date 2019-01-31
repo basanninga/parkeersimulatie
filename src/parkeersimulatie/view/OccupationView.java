@@ -28,7 +28,6 @@ public class OccupationView extends AbstractView {
         this.adhocCarsPass = carPark.getAdhocCarsPass();
         this.parkingCarsPass = carPark.getPassCar();
 
-        //this.clock = new JLabel("Time");
         this.aantalAdhoc = new JLabel("Aantal bezoekers: ");
         this.aantalParking = new JLabel("Aantal pass bezoekers: ");
 
@@ -48,8 +47,8 @@ public class OccupationView extends AbstractView {
         adhocCarsPass = carPark.getAdhocCarsPass();
         parkingCarsPass = carPark.getPassCar();
 
-        aantalAdhoc.setText("Aantal bezoekers: " + adhocCarsPass);
-        aantalParking.setText("Aantal pass bezoekers: " + parkingCarsPass);
+        aantalAdhoc.setText("Aantal bezoekers: " + (adhocCarsPass - carPark.getEntranceCarQueue()));
+        aantalParking.setText("Aantal pass bezoekers: " + (parkingCarsPass - carPark.getEntrancePassCarQueue()));
 
         setVisible(true);
         super.updateView();
