@@ -21,9 +21,6 @@ public class CarParkView extends AbstractView {
         super(model);
         this.size = new Dimension(800, 330);
 
-
-
-
     }
 
 

@@ -20,9 +20,12 @@ public class Simulator extends JFrame{
     private AbstractView carParkView;
     private AbstractView statsView;
     private AbstractView timeView;
-    private AbstractView carQueueView;
+    private AbstractView occupationView;
+
 
     private AbstractController controller;
+
+    public static boolean running;
 
 
     public static int tickPause = 100;
@@ -34,7 +37,7 @@ public class Simulator extends JFrame{
         this.carParkView = new CarParkView(carPark);
         this.statsView = new StatsView(carPark);
         this.timeView = new TimeView(carPark);
-        this.carQueueView = new CarQueueView(carPark);
+        this.occupationView = new OccupationView(carPark);
 
 
         this.controller = new Controller(carPark);
@@ -46,21 +49,22 @@ public class Simulator extends JFrame{
         SCREEN.getContentPane().add(carParkView);
         SCREEN.getContentPane().add(statsView);
         SCREEN.getContentPane().add(timeView);
-        SCREEN.getContentPane().add(carQueueView);
+        SCREEN.getContentPane().add(occupationView);
 
         SCREEN.getContentPane().add(controller);
 
-        carParkView.setBounds(260,90,800,330);
+        carParkView.setBounds(260,30,800,330);
         statsView.setBounds(30,200,150,120);
         timeView.setBounds(1100,200,150,120);
-        carQueueView.setBounds(60,20,1200,40);
+        occupationView.setBounds(1100,400,250,120);
+
 
 
         controller.setBounds(30,320,910,90);
 
         statsView.setBorder(BorderFactory.createLineBorder(Color.black));
         timeView.setBorder(BorderFactory.createLineBorder(Color.black));
-        carQueueView.setBorder(BorderFactory.createLineBorder(Color.black));
+        occupationView.setBorder(BorderFactory.createLineBorder(Color.black));
 
         SCREEN.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,17 +74,27 @@ public class Simulator extends JFrame{
 
         carParkView.updateView();
 
+        while (true) {
+            if(running){
+                tick();
+            }
+            try {
+                Thread.sleep(tickPause);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
 
 
 
         //simulatorController = new CarQueueController(this);
     }
 
-    public void run() {
-        while (true) {
+    /*public void run() {
+        while (running) {
             tick();
         }
-    }
+    }*/
 
     private void tick() {
         time.advanceTime();
@@ -88,11 +102,7 @@ public class Simulator extends JFrame{
         carPark.handleExit();
         carPark.updateViews();
         // Pause.
-        try {
-            Thread.sleep(tickPause);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
         carPark.handleEntrance();
     }
 

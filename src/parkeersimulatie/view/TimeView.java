@@ -13,6 +13,10 @@ public class TimeView extends AbstractView {
     private Time time;
 
     private JLabel day;
+    private JLabel clock;
+
+    private String dayText;
+    private String clockText;
 
     public TimeView(AbstractModel model) {
         super(model);
@@ -22,10 +26,13 @@ public class TimeView extends AbstractView {
         time = carPark.getTime();
 
         this.day = new JLabel("maandag");
+        this.clock = new JLabel("0");
 
-        this.day.setBounds(10,50,100,100);
+        this.day.setBounds(10,10,100,20);
+        this.clock.setBounds(10,25,50,20);
 
         this.add(day);
+        this.add(clock);
 
     }
 
@@ -34,8 +41,11 @@ public class TimeView extends AbstractView {
 
         CarPark carPark = (CarPark) super.model;
 
+        dayText = time.getDayString();
+        clockText = time.getClock();
 
-        day.setText("check");
+        day.setText(dayText);
+        clock.setText(clockText);
 
         setVisible(true);
         super.updateView();
