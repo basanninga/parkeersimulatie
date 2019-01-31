@@ -35,12 +35,12 @@ public final class CarPark extends AbstractModel {
     int weekDayPassArrivals = 0; // average number of arriving cars per hour
     int weekendPassArrivals = 0; // average number of arriving cars per hour
 
-    int enterSpeed = 6; // number of cars that can enter per minute
-    int paymentSpeed = 7; // number of cars that can pay per minute
-    int exitSpeed = 5; // number of cars that can leave per minute
+    private static int enterSpeed = 6; // number of cars that can enter per minute
+    private static int paymentSpeed = 7; // number of cars that can pay per minute
+    private static int exitSpeed = 5; // number of cars that can leave per minute
 
-    public int adhocCarsPass;
-    public int passCar;
+    private int adhocCarsPass;
+    private int passCar;
 
     public CarPark (int numberOfFloors, int numberOfRows, int numberOfPlaces, Time time){
 
@@ -61,6 +61,18 @@ public final class CarPark extends AbstractModel {
         exitCarQueue = new CarQueue();
 
 
+    }
+
+    public static void setEnterSpeed(int i){
+        enterSpeed = i;
+    }
+
+    public static void setPaymentSpeed(int i){
+        paymentSpeed = i;
+    }
+
+    public static void setExitSpeed(int i){
+        exitSpeed = i;
     }
 
     public Car getCarAt(Location location) {
@@ -166,10 +178,7 @@ public final class CarPark extends AbstractModel {
         int floor = location.getFloor();
         int row = location.getRow();
         int place = location.getPlace();
-        if (floor < 0 || floor >= numberOfFloors || row < 0 || row > numberOfRows || place < 0 || place > numberOfPlaces) {
-            return false;
-        }
-        return true;
+        return floor >= 0 && floor < numberOfFloors && row >= 0 && row <= numberOfRows && place >= 0 && place <= numberOfPlaces;
     }
 
     public void setArrivals(){
@@ -400,16 +409,5 @@ public final class CarPark extends AbstractModel {
     public int getPassCar() {
         return passCar;
     }
-
-
-
-
-
-
-
-
-
-
-
 
 }

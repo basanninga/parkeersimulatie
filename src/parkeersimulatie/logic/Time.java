@@ -56,7 +56,7 @@ public class Time extends AbstractModel {
 
     public String getClock(){
         String hourString = Objects.toString(hour);
-        String miniuteString = Objects.toString(minute);;
+        String miniuteString = Objects.toString(minute);
         if(hour< 10){
             hourString = "0" + hourString;
 

@@ -15,6 +15,9 @@ public class TimeView extends AbstractView {
     private JLabel day;
     private JLabel clock;
 
+    private JLabel dayLabel;
+    private JLabel clockLabel;
+
     private String dayText;
     private String clockText;
 
@@ -26,13 +29,20 @@ public class TimeView extends AbstractView {
         time = carPark.getTime();
 
         this.day = new JLabel("maandag");
-        this.clock = new JLabel("0");
+        this.clock = new JLabel("00:00");
 
-        this.day.setBounds(10,10,100,20);
-        this.clock.setBounds(10,25,50,20);
+        this.dayLabel = new JLabel("Dag:");
+        this.clockLabel = new JLabel("Tijd:");
 
+        this.day.setBounds(50,10,100,20);
+        this.clock.setBounds(50,25,50,20);
+
+        this.dayLabel.setBounds(10,10,50,20);
+        this.clockLabel.setBounds(10,25,50,20);
         this.add(day);
         this.add(clock);
+        this.add(dayLabel);
+        this.add(clockLabel);
 
     }
 
