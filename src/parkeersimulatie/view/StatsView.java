@@ -5,6 +5,7 @@ import parkeersimulatie.logic.CarPark;
 import parkeersimulatie.logic.Time;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.Objects;
 
 public class StatsView extends AbstractView {

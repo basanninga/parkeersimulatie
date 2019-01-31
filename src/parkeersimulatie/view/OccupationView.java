@@ -33,8 +33,8 @@ public class OccupationView extends AbstractView {
         this.aantalParking = new JLabel("Aantal pass bezoekers: ");
 
 
-        aantalAdhoc.setBounds(10,20,400,20);
-        aantalParking.setBounds(10,40,400,20);
+        aantalAdhoc.setBounds(10,30,400,20);
+        aantalParking.setBounds(10,50,400,20);
 
         this.add(aantalAdhoc);
         this.add(aantalParking);

@@ -15,6 +15,10 @@ public class Controller extends AbstractController implements ActionListener {
     private JTextField paymentSpeedField;
     private JTextField exitSpeedField;
 
+    private JLabel enterSpeedLabel;
+    private JLabel paymentSpeedLabel;
+    private JLabel exitSpeedLabel;
+
     private JLabel tickLabel;
 
     private JButton start;
@@ -28,7 +32,12 @@ public class Controller extends AbstractController implements ActionListener {
 
         setLayout(null);
 
-        tickLabel = new JLabel("Snelheid Simulatie");
+        tickLabel = new JLabel("Simulatie snelheid");
+
+        enterSpeedLabel = new JLabel("Enter snelheid");
+        paymentSpeedLabel = new JLabel("Betaal snelheid");
+        exitSpeedLabel = new JLabel("Verlaat snelheid");
+
         tickField = new JTextField("100", 5);
 
         enterSpeedField = new JTextField("6", 3);
@@ -47,14 +56,22 @@ public class Controller extends AbstractController implements ActionListener {
         exitSpeedField.addActionListener(this);
         tickField.addActionListener(this);
 
-        enterSpeedField.setBounds(40, 100, 40, 20);
-        paymentSpeedField.setBounds(40, 130, 40, 20);
-        exitSpeedField.setBounds(40, 160, 40, 20);
+        tickLabel.setBounds(0,70,150,20);
+        enterSpeedLabel.setBounds(0,100,150,20);
+        paymentSpeedLabel.setBounds(0,130,150,20);
+        exitSpeedLabel.setBounds(0,160,150,20);
 
-        tickLabel.setBounds(10,40,200,20);
-        tickField.setBounds(40, 60, 40, 20);
-        start.setBounds(500, 110, 100, 20);
-        pause.setBounds(800, 110, 100, 20);
+        tickField.setBounds(140, 70, 40, 20);
+        enterSpeedField.setBounds(140, 100, 40, 20);
+        paymentSpeedField.setBounds(140, 130, 40, 20);
+        exitSpeedField.setBounds(140, 160, 40, 20);
+
+        start.setBounds(500, 260, 100, 20);
+        pause.setBounds(700, 260, 100, 20);
+
+        add(enterSpeedLabel);
+        add(paymentSpeedLabel);
+        add(exitSpeedLabel);
         add(tickLabel);
         add(tickField);
         add(enterSpeedField);

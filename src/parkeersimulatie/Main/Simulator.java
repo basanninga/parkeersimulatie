@@ -45,7 +45,7 @@ public class Simulator extends JFrame{
         this.controller = new Controller(carPark);
 
 
-        SCREEN.setSize(1400, 750);
+        SCREEN.setSize(1450, 750);
         SCREEN.setLayout(null);
 
         SCREEN.getContentPane().add(carParkView);
@@ -56,15 +56,15 @@ public class Simulator extends JFrame{
 
         SCREEN.getContentPane().add(controller);
 
-        carParkView.setBounds(260,90,800,330);
+        carParkView.setBounds(260,145,800,330);
         statsView.setBounds(30,200,150,120);
-        timeView.setBounds(1100,200,150,120);
-        occupationView.setBounds(1100,400,250,120);
-        carQueueView.setBounds(10, 10, 1200,40);
+        timeView.setBounds(1150,200,150,120);
+        occupationView.setBounds(1150,400,250,120);
+        carQueueView.setBounds(100, 10, 1200,40);
 
 
 
-        controller.setBounds(30,320,910,200);
+        controller.setBounds(30,320,910,400);
 
         statsView.setBorder(BorderFactory.createLineBorder(Color.black));
         timeView.setBorder(BorderFactory.createLineBorder(Color.black));

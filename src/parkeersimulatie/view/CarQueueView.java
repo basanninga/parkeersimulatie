@@ -42,14 +42,14 @@ public class CarQueueView extends AbstractView {
         this.queueExitLengthText = new JLabel("Rij voor uitgang:");
         this.queueExitLength = new JLabel();
 
-        queueLength.setBounds(150,5,30,30);
-        queueLengthText.setBounds(30,5,200,30);
-        queuePayLength.setBounds(360, 5 , 30, 30 );
-        queuePayText.setBounds(200, 5, 200,30);
-        queuePassLength.setBounds(600,5,30,30);
-        queuePassLengthText.setBounds(400,5,200,30);
-        queueExitLengthText.setBounds(640,5,200,30);
-        queueExitLength.setBounds(750,5, 30,30);
+        queueLength.setBounds(340,5,30,30);
+        queueLengthText.setBounds(220,5,200,30);
+        queuePayLength.setBounds(550, 5 , 30, 30 );
+        queuePayText.setBounds(390, 5, 200,30);
+        queuePassLength.setBounds(790,5,30,30);
+        queuePassLengthText.setBounds(590,5,200,30);
+        queueExitLengthText.setBounds(830,5,200,30);
+        queueExitLength.setBounds(940,5, 30,30);
         add(queueLength);
         add(queuePayLength);
         add(queueLengthText);
