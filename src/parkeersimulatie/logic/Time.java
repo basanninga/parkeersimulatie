@@ -1,6 +1,9 @@
 package parkeersimulatie.logic;
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 public class Time extends AbstractModel {
@@ -9,12 +12,20 @@ public class Time extends AbstractModel {
     private int hour = 0;
     private int minute = 0;
 
+    private int runningDay;
+
     public Time() {
 
     }
 
     public int getDay() {
         return day;
+    }
+
+
+
+    public int getRunningDay(){
+        return runningDay;
     }
 
     public int getHour() {
@@ -31,6 +42,7 @@ public class Time extends AbstractModel {
         while (hour > 23) {
             hour -= 24;
             day++;
+            runningDay++;
         }
         while (day > 6) {
             day -= 7;

@@ -15,13 +15,11 @@ public class CarParkView extends AbstractView {
     private Image carParkImage;
 
 
-    private JLabel current;
 
-    private Simulator simulator;
 
     public CarParkView(CarPark model) {
         super(model);
-        size = new Dimension(0, 0);
+        this.size = new Dimension(800, 330);
 
 
 
@@ -30,9 +28,7 @@ public class CarParkView extends AbstractView {
 
 
 
-    public Dimension getPreferredSize() {
-        return new Dimension(800, 500);
-    }
+
 
 
     public void paintComponent(Graphics g) {
@@ -55,10 +51,10 @@ public class CarParkView extends AbstractView {
 
         CarPark carPark = (CarPark) super.model;
 
-        if (!size.equals(getSize())) {
-            size = getSize();
-            carParkImage = createImage(size.width, size.height);
-        }
+
+
+        carParkImage = createImage(size.width, size.height);
+
         Graphics graphics = carParkImage.getGraphics();
         for(int floor = 0; floor < carPark.getNumberOfFloors(); floor++) {
             for(int row = 0; row < carPark.getNumberOfRows(); row++) {

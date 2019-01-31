@@ -5,6 +5,7 @@ package parkeersimulatie.view;
 import parkeersimulatie.logic.AbstractModel;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Class AbstractView
@@ -28,7 +29,7 @@ public class AbstractView extends JPanel
         model.addView(this);
 
         // we use absolute positioning so we can set the layout to null
-        //setLayout(null);
+        setLayout(null);
     }
 
     public void updateView() {

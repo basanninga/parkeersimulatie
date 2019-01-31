@@ -8,6 +8,7 @@ import parkeersimulatie.logic.CarPark;
 import parkeersimulatie.view.AbstractView;
 import parkeersimulatie.view.CarParkView;
 import parkeersimulatie.view.StatsView;
+import parkeersimulatie.view.TimeView;
 
 
 import javax.swing.*;
@@ -15,13 +16,13 @@ import java.awt.*;
 
 public class Simulator extends JFrame{
 
+    public static final JFrame SCREEN = new JFrame();
+
     private Time time;
     private CarPark carPark;
     private AbstractView carParkView;
     private AbstractView statsView;
-
-    private JLabel current;
-
+    private AbstractView timeView;
 
     private AbstractController controller;
 
@@ -32,20 +33,38 @@ public class Simulator extends JFrame{
         time = new Time();
         carPark = new CarPark(3, 6, 30, time);
 
-        carParkView = new CarParkView(carPark);
+        this.carParkView = new CarParkView(carPark);
         this.statsView = new StatsView(carPark);
+        this.timeView = new TimeView(carPark);
+
+
         this.controller = new Controller(carPark);
 
 
-        Container contentPane = getContentPane();
-        contentPane.setLayout(new FlowLayout());
-        contentPane.add(carParkView);
-        contentPane.add(statsView);
-        contentPane.add(controller);
-        pack();
-        setVisible(true);
+        SCREEN.setSize(1400, 750);
+        SCREEN.setLayout(null);
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        SCREEN.getContentPane().add(carParkView);
+        SCREEN.getContentPane().add(statsView);
+        SCREEN.getContentPane().add(timeView);
+
+        SCREEN.getContentPane().add(controller);
+
+        carParkView.setBounds(260,30,800,330);
+        statsView.setBounds(30,200,150,120);
+        timeView.setBounds(1100,200,150,120);
+
+
+        controller.setBounds(30,320,910,90);
+
+        statsView.setBorder(BorderFactory.createLineBorder(Color.black));
+        timeView.setBorder(BorderFactory.createLineBorder(Color.black));
+
+        SCREEN.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        SCREEN.setVisible(true);
+        SCREEN.setResizable(true);
+
 
         carParkView.updateView();
 
