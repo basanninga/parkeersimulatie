@@ -57,4 +57,5 @@ public abstract class Car extends AbstractModel {
     }
 
     public abstract Color getColor();
+
 }

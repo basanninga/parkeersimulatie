@@ -4,6 +4,7 @@ import parkeersimulatie.logic.AbstractModel;
 import parkeersimulatie.logic.CarPark;
 import parkeersimulatie.logic.Time;
 import javax.swing.*;
+import java.util.Objects;
 
 public class TimeView extends AbstractView {
 
@@ -11,12 +12,15 @@ public class TimeView extends AbstractView {
 
     private JLabel day;
     private JLabel clock;
+    private JLabel runningDays;
 
     private JLabel dayLabel;
     private JLabel clockLabel;
+    private JLabel runningDaysLabel;
 
     private String dayText;
     private String clockText;
+    private String runningDaysText;
 
 
     /**
@@ -33,19 +37,27 @@ public class TimeView extends AbstractView {
 
         this.day = new JLabel("maandag");
         this.clock = new JLabel("00:00");
+        this.runningDays = new JLabel("0");
 
         this.dayLabel = new JLabel("Dag:");
         this.clockLabel = new JLabel("Tijd:");
+        this.runningDaysLabel = new JLabel("Dagen:");
 
-        this.day.setBounds(50,30,100,20);
-        this.clock.setBounds(50,50,50,20);
+        this.day.setBounds(50,10,100,20);
+        this.clock.setBounds(50,25,50,20);
+        this.runningDays.setBounds(50,50,50,20);
 
-        this.dayLabel.setBounds(10,30,50,20);
-        this.clockLabel.setBounds(10,50,50,20);
+        this.dayLabel.setBounds(10,10,50,20);
+        this.clockLabel.setBounds(10,25,50,20);
+        this.runningDaysLabel.setBounds(10,50,50,20);
+
         this.add(day);
         this.add(clock);
+        this.add(runningDays);
+
         this.add(dayLabel);
         this.add(clockLabel);
+        this.add(runningDaysLabel);
 
     }
 
@@ -59,9 +71,12 @@ public class TimeView extends AbstractView {
 
         dayText = time.getDayString();
         clockText = time.getClock();
+        runningDaysText = Objects.toString(time.getRunningDay());
+
 
         day.setText(dayText);
         clock.setText(clockText);
+        runningDays.setText(runningDaysText);
 
         setVisible(true);
         super.updateView();

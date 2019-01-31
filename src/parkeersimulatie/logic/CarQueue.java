@@ -29,6 +29,10 @@ public class CarQueue extends AbstractModel {
     /**
      * @return int grootte van de queue
      */
+    public Car getCar() {
+        return queue.peek();
+    }
+
     public int carsInQueue() {
         return queue.size();
     }

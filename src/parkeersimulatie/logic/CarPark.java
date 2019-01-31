@@ -1,5 +1,7 @@
 package parkeersimulatie.logic;
 
+
+import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
@@ -9,18 +11,21 @@ public final class CarPark extends AbstractModel {
     private int numberOfRows;
     private int numberOfPlaces;
     private int numberOfOpenSpots;
+    private int passnumberOfOpenSpots;
     private Car[][][] cars;
 
     private Time time;
 
     private static final String AD_HOC = "1";
     private static final String PASS = "2";
+    private static final String RESERVATION = "3";
 
     private static int totalMinutes;
     private static int stayMinutes;
 
     private CarQueue entranceCarQueue;
     private CarQueue entrancePassQueue;
+    private CarQueue entranceReservationQueue;
     private CarQueue paymentCarQueue;
     private CarQueue exitCarQueue;
 
@@ -28,6 +33,8 @@ public final class CarPark extends AbstractModel {
     int weekendArrivals = 0; // average number of arriving cars per hour
     int weekDayPassArrivals = 0; // average number of arriving cars per hour
     int weekendPassArrivals = 0; // average number of arriving cars per hour
+    int weekDayReservationArrivals = 0; // average number of arriving cars per hour
+    int weekendReservationArrivals = 0;
 
     private static int enterSpeed = 6; // number of cars that can enter per minute
     private static int paymentSpeed = 7; // number of cars that can pay per minute
@@ -35,6 +42,7 @@ public final class CarPark extends AbstractModel {
 
     private int adhocCarsPass;
     private int passCar;
+    private int reservation;
 
 
     /**
@@ -46,14 +54,18 @@ public final class CarPark extends AbstractModel {
 
         this.time = time;
 
+
         this.numberOfFloors = numberOfFloors;
         this.numberOfRows = numberOfRows;
         this.numberOfPlaces = numberOfPlaces;
-        this.numberOfOpenSpots = numberOfFloors * numberOfRows * numberOfPlaces;
+        this.passnumberOfOpenSpots = numberOfPlaces*2;
+        this.numberOfOpenSpots = 3 * 5 * numberOfPlaces+30;
+
         cars = new Car[numberOfFloors][numberOfRows][numberOfPlaces];
 
         entranceCarQueue = new CarQueue();
         entrancePassQueue = new CarQueue();
+        entranceReservationQueue = new CarQueue();
         paymentCarQueue = new CarQueue();
         exitCarQueue = new CarQueue();
 
@@ -75,10 +87,6 @@ public final class CarPark extends AbstractModel {
         paymentSpeed = i;
     }
 
-    /**
-     *   Pakt de autos van een bepaalde locatie
-     @param i Integer
-     */
     public static void setExitSpeed(int i){
         exitSpeed = i;
     }
@@ -107,7 +115,13 @@ public final class CarPark extends AbstractModel {
         if (oldCar == null) {
             cars[location.getFloor()][location.getRow()][location.getPlace()] = car;
             car.setLocation(location);
-            numberOfOpenSpots--;
+            if (car.getColor() == Color.red || car.getColor() == Color.blue) {
+                numberOfOpenSpots--;
+            }
+            else if (car.getColor() == Color.green) {
+                passnumberOfOpenSpots--;
+            }
+
             return true;
         }
         return false;
@@ -145,6 +159,10 @@ public final class CarPark extends AbstractModel {
         return entrancePassQueue.carsInQueue();
     }
 
+    public int getEntranceReservationQueue(){
+        return entranceReservationQueue.carsInQueue();
+    }
+
     public Car removeCarAt(Location location) {
         if (!locationIsValid(location)) {
             return null;
@@ -155,8 +173,30 @@ public final class CarPark extends AbstractModel {
         }
         cars[location.getFloor()][location.getRow()][location.getPlace()] = null;
         car.setLocation(null);
-        numberOfOpenSpots++;
+        if (car.getColor() == Color.red || car.getColor() == Color.blue) {
+            numberOfOpenSpots++;
+        }
+        else if (car.getColor() == Color.green) {
+            passnumberOfOpenSpots++;
+        }
+
         return car;
+    }
+
+    public Location getFirstPassFreeLocation() {
+
+        for (int floor = 2; floor < getNumberOfFloors(); floor++) {
+            for (int row = 4; row < getNumberOfRows(); row++) {
+                for (int place = 0; place < getNumberOfPlaces(); place++) {
+                    Location location = new Location(floor, row, place);
+                    if (getCarAt(location) == null) {
+                        return location;
+                    }
+                }
+            }
+        }
+
+        return null;
     }
 
     public Location getFirstFreeLocation() {
@@ -211,66 +251,84 @@ public final class CarPark extends AbstractModel {
         return floor >= 0 && floor < numberOfFloors && row >= 0 && row <= numberOfRows && place >= 0 && place <= numberOfPlaces;
     }
 
-    public void setArrivals(){
+    public void setArrivals() {
         //Het wordt druk
         if (time.getHour() > 12 && time.getHour() < 18) {
             switch (time.getDay()) {
                 case 0:
                     weekDayArrivals = 100;
                     weekDayPassArrivals = 20;
+                    weekDayReservationArrivals = 25;
                     break;
                 case 1:
                     weekDayArrivals = 100;
                     weekDayPassArrivals = 20;
+                    weekDayReservationArrivals = 25;
                     break;
                 case 2:
                     weekDayArrivals = 150;
                     weekDayPassArrivals = 35;
+                    weekDayReservationArrivals = 25;
                     break;
                 case 3:
                     weekDayArrivals = 175;
                     weekDayPassArrivals = 40;
+                    weekDayReservationArrivals = 25;
                     break;
                 case 4:
                     weekDayArrivals = 225;
                     weekDayPassArrivals = 50;
+                    weekDayReservationArrivals = 30;
                     break;
-                case 5: weekendArrivals = 350;
+                case 5:
+                    weekendArrivals = 350;
                     weekendPassArrivals = 100;
+                    weekendReservationArrivals = 30;
                     break;
-                case 6: weekendArrivals = 275;
+                case 6:
+                    weekendArrivals = 275;
                     weekendPassArrivals = 75;
+                    weekendReservationArrivals = 30;
                     break;
 
             }
             //Het wordt rustig
-        }else{
+        } else {
             switch (time.getDay()) {
                 case 0:
                     weekDayArrivals = 60;
                     weekDayPassArrivals = 15;
+                    weekDayReservationArrivals = 20;
                     break;
                 case 1:
                     weekDayArrivals = 60;
                     weekDayPassArrivals = 15;
+                    weekDayReservationArrivals = 20;
                     break;
                 case 2:
                     weekDayArrivals = 90;
                     weekDayPassArrivals = 18;
+                    weekDayReservationArrivals = 20;
                     break;
                 case 3:
                     weekDayArrivals = 125;
                     weekDayPassArrivals = 20;
+                    weekDayReservationArrivals = 20;
                     break;
                 case 4:
                     weekDayArrivals = 150;
                     weekDayPassArrivals = 35;
+                    weekDayReservationArrivals = 20;
                     break;
-                case 5: weekendArrivals = 200;
+                case 5:
+                    weekendArrivals = 200;
                     weekendPassArrivals = 40;
+                    weekendReservationArrivals = 20;
                     break;
-                case 6: weekendArrivals = 60;
+                case 6:
+                    weekendArrivals = 60;
                     weekendPassArrivals = 15;
+                    weekendReservationArrivals = 10;
                     break;
 
             }
@@ -282,6 +340,7 @@ public final class CarPark extends AbstractModel {
         carsArriving();
         carsEntering(entrancePassQueue);
         carsEntering(entranceCarQueue);
+        carsEntering(entranceReservationQueue);
     }
 
     public void handleExit() {
@@ -301,20 +360,46 @@ public final class CarPark extends AbstractModel {
         addArrivingCars(numberOfCars, AD_HOC);
         numberOfCars = getNumberOfCars(weekDayPassArrivals, weekendPassArrivals);
         addArrivingCars(numberOfCars, PASS);
+        numberOfCars = getNumberOfCars(weekDayReservationArrivals, weekendReservationArrivals);
+        addArrivingCars(numberOfCars, RESERVATION);
+
     }
 
     private void carsEntering(CarQueue queue) {
         int i = 0;
         // Remove car from the front of the queue and assign to a parking space.
-        while (queue.carsInQueue() > 0 && getNumberOfOpenSpots() > 0 && i < enterSpeed) {
-            Car car = queue.removeCar();
-            Location freeLocation = getFirstFreeLocation();
-            setCarAt(freeLocation, car);
-            i++;
-            stayMinutes = (stayMinutes + car.getStayMinutes());
 
+
+        if(queue.carsInQueue() >0 ) {
+
+            Car firstCar = queue.getCar();
+
+            if (firstCar.getColor() == Color.green ) {
+                while ((queue.carsInQueue() > 0 && getPassNumberOfOpenSpots() > 0 && i < enterSpeed)) {
+
+                    Car car = queue.removeCar();
+                    Location freeLocation = getFirstPassFreeLocation();
+                    setCarAt(freeLocation, car);
+                    i++;
+                    stayMinutes = (stayMinutes + car.getStayMinutes());
+
+                }
+            }
+            else if (firstCar.getColor() == Color.red || firstCar.getColor() == Color.blue) {
+                while ((queue.carsInQueue() > 0 && getNumberOfOpenSpots() > 0 && i < enterSpeed)) {
+
+                    Car car = queue.removeCar();
+                    Location freeLocation = getFirstFreeLocation();
+                    setCarAt(freeLocation, car);
+                    i++;
+                    stayMinutes = (stayMinutes + car.getStayMinutes());
+
+                }
+            }
         }
     }
+
+
 
     private void carsReadyToLeave() {
         // Add leaving cars to the payment queue.
@@ -336,7 +421,6 @@ public final class CarPark extends AbstractModel {
         while (paymentCarQueue.carsInQueue() > 0 && i < paymentSpeed) {
             Car car = paymentCarQueue.removeCar();
             totalMinutes = (totalMinutes + car.getStayMinutes());
-            // TODO Handle payment.
             carLeavesSpot(car);
             i++;
         }
@@ -348,11 +432,14 @@ public final class CarPark extends AbstractModel {
         while (exitCarQueue.carsInQueue() > 0 && i < exitSpeed) {
             Car car = exitCarQueue.removeCar();
             totalMinutes = (totalMinutes + car.getStayMinutes());
-            if(car.getColor() == Color.red){
+            if (car.getColor() == Color.red) {
                 adhocCarsPass--;
             }
-            if(car.getColor() == Color.blue){
+            else if (car.getColor() == Color.blue) {
                 passCar--;
+            }
+            else if(car.getColor() == Color.green){
+                reservation--;
             }
             i++;
         }
@@ -387,6 +474,12 @@ public final class CarPark extends AbstractModel {
                     passCar++;
                 }
                 break;
+            case RESERVATION:
+                for (int i = 0; i < numberOfCars; i++) {
+                    entranceReservationQueue.addCar(new Reservation());
+                    reservation++;
+                }
+                break;
         }
     }
 
@@ -410,6 +503,10 @@ public final class CarPark extends AbstractModel {
 
     public int getNumberOfOpenSpots() {
         return numberOfOpenSpots;
+    }
+
+    public int getPassNumberOfOpenSpots() {
+        return passnumberOfOpenSpots;
     }
 
     public Time getTime() {
@@ -438,6 +535,10 @@ public final class CarPark extends AbstractModel {
 
     public int getPassCar() {
         return passCar;
+    }
+
+    public int getReservationCar() {
+        return reservation;
     }
 
 }
