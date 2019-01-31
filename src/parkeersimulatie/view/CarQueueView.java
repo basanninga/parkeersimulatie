@@ -81,21 +81,33 @@ public class CarQueueView extends AbstractView {
             JOptionPane.showMessageDialog(new JFrame(), ingang, "Waarschuwing",
                     JOptionPane.ERROR_MESSAGE);
             Show1 = false;
+
+        }else if(carPark.getEntranceCarQueue() < 100 && !Show1) {
+            Show1 = true;
         }
         else if(carPark.getPaymentCarQueue() > 100 && Show2) {
             JOptionPane.showMessageDialog(new JFrame(), betaalautomaat, "Waarschuwing",
                     JOptionPane.ERROR_MESSAGE);
             Show2 = false;
+
+        }else if(carPark.getPaymentCarQueue() < 100 && !Show2) {
+            Show2 = true;
         }
         else if(carPark.getEntrancePassCarQueue() > 100 && Show3) {
             JOptionPane.showMessageDialog(new JFrame(), abonnementhouders, "Waarschuwing",
                     JOptionPane.ERROR_MESSAGE);
             Show3 = false;
+
+        }else if(carPark.getEntrancePassCarQueue() < 100 && !Show3) {
+            Show3 = true;
         }
         else if(carPark.getExitCarQueue() > 100 && Show4) {
             JOptionPane.showMessageDialog(new JFrame(), uitgang, "Waarschuwing",
                     JOptionPane.ERROR_MESSAGE);
             Show4 = false;
+
+        }else if(carPark.getExitCarQueue() < 100 && !Show4) {
+            Show4 = true;
         }
 
 

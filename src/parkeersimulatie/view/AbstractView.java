@@ -25,9 +25,7 @@ public class AbstractView extends JPanel
         // we use absolute positioning so we can set the layout to null
         setLayout(null);
     }
-
     public void updateView() {
         repaint();
     }
-
 }
