@@ -2,9 +2,12 @@ package parkeersimulatie.logic;
 
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.Random;
 
 public final class CarPark extends AbstractModel {
+
+
 
     private int numberOfFloors;
     private int numberOfRows;
@@ -24,7 +27,6 @@ public final class CarPark extends AbstractModel {
     private CarQueue entrancePassQueue;
     private CarQueue paymentCarQueue;
     private CarQueue exitCarQueue;
-    public double profit;
 
 
 
@@ -36,6 +38,9 @@ public final class CarPark extends AbstractModel {
     int enterSpeed = 6; // number of cars that can enter per minute
     int paymentSpeed = 7; // number of cars that can pay per minute
     int exitSpeed = 5; // number of cars that can leave per minute
+
+    public int adhocCarsPass;
+    public int passCar;
 
     public CarPark (int numberOfFloors, int numberOfRows, int numberOfPlaces, Time time){
 
@@ -284,6 +289,12 @@ public final class CarPark extends AbstractModel {
         while (exitCarQueue.carsInQueue() > 0 && i < exitSpeed) {
             Car car = exitCarQueue.removeCar();
             totalMinutes = (totalMinutes + car.getStayMinutes());
+            if(car.getColor() == Color.red){
+                adhocCarsPass--;
+            }
+            if(car.getColor() == Color.blue){
+                passCar--;
+            }
             i++;
         }
     }
@@ -308,11 +319,13 @@ public final class CarPark extends AbstractModel {
             case AD_HOC:
                 for (int i = 0; i < numberOfCars; i++) {
                     entranceCarQueue.addCar(new AdHocCar());
+                    adhocCarsPass++;
                 }
                 break;
             case PASS:
                 for (int i = 0; i < numberOfCars; i++) {
                     entrancePassQueue.addCar(new ParkingPassCar());
+                    passCar++;
                 }
                 break;
         }
@@ -358,6 +371,14 @@ public final class CarPark extends AbstractModel {
 
     public int getStayMinutes() {
         return stayMinutes;
+    }
+
+    public int getAdhocCarsPass() {
+        return adhocCarsPass;
+    }
+
+    public int getPassCar() {
+        return passCar;
     }
 
 
