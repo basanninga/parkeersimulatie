@@ -5,8 +5,6 @@ import parkeersimulatie.logic.CarPark;
 import parkeersimulatie.logic.Time;
 
 import javax.swing.*;
-import java.awt.*;
-import java.util.Objects;
 
 public class StatsView extends AbstractView {
 
@@ -38,10 +36,11 @@ public class StatsView extends AbstractView {
 
 
     /**
-     * Constructor of AbstractView that expects a model belonging to this view.
-     *
-     * @param model AbstractModel that belongs to this view.
+     *  Constructor van StatsView met een model van AbstractModel
+
+     *  @param model AbstractModel dat hoort bij deze view.
      */
+
     public StatsView(AbstractModel model) {
         super(model);
 
@@ -55,16 +54,13 @@ public class StatsView extends AbstractView {
 
         this.currentText = new JLabel("Current: ");
         this.expectedText = new JLabel("Expected: ");
-        //this.day = new JLabel("Day");
         this.yesterdayText = new JLabel("Yesterday: ");
         this.totalText = new JLabel("Total: ");
 
-        //this.clock = new JLabel("clock");
-        this.current = new JLabel("0");
-        this.expected = new JLabel("0");
-        //this.day = new JLabel("day");
-        this.yesterday = new JLabel("0");
-        this.total = new JLabel("0");
+        this.current = new JLabel("\u20ac" + "0");
+        this.expected = new JLabel("\u20ac" + "0");
+        this.yesterday = new JLabel("\u20ac" + "0");
+        this.total = new JLabel("\u20ac" + "0");
 
         expected.setBounds(80,10,50,20);
         current.setBounds(80,30,50,20);
@@ -88,6 +84,10 @@ public class StatsView extends AbstractView {
         this.add(yesterday);
 
     }
+
+    /**
+     Methode voor het updaten van de view.
+     */
 
     @Override
     public void updateView() {

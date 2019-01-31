@@ -28,19 +28,26 @@ public class CarQueueView extends AbstractView {
     private boolean Show3 = true;
     private boolean Show4 = true;
 
+
+    /**
+     *  Constructor van CarQueueView met een model van AbstractModel
+
+     *  @param model AbstractModel dat hoort bij deze view.
+     */
+
     public CarQueueView(AbstractModel model){
         super(model);
 
         this.size = new Dimension(1200,40);
 
-        this.queueLength = new JLabel();
+        this.queueLength = new JLabel("0");
         this.queueLengthText = new JLabel("Rij voor de ingang:");
-        this.queuePayLength = new JLabel();
+        this.queuePayLength = new JLabel("0");
         this.queuePayText = new JLabel("Rij voor betaalautomaat:");
-        this.queuePassLength = new JLabel();
+        this.queuePassLength = new JLabel("0");
         this.queuePassLengthText = new JLabel("Rij voor abonnementhouders:");
         this.queueExitLengthText = new JLabel("Rij voor uitgang:");
-        this.queueExitLength = new JLabel();
+        this.queueExitLength = new JLabel("0");
 
         queueLength.setBounds(340,5,30,30);
         queueLengthText.setBounds(220,5,200,30);
@@ -62,6 +69,9 @@ public class CarQueueView extends AbstractView {
 
     }
 
+    /**
+     Methode voor het updaten van de view.
+     */
 
     public void updateView(){
 

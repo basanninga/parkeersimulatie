@@ -1,12 +1,9 @@
 package parkeersimulatie.view;
 
-import parkeersimulatie.Main.Simulator;
-import parkeersimulatie.logic.AbstractModel;
 import parkeersimulatie.logic.Car;
 import parkeersimulatie.logic.CarPark;
 import parkeersimulatie.logic.Location;
 
-import javax.swing.*;
 import java.awt.*;
 
 public class CarParkView extends AbstractView {
@@ -16,15 +13,15 @@ public class CarParkView extends AbstractView {
 
 
 
-
+    /**
+     *  Constructor van CarQueueView met een model van CarPark
+     *  @param model CarPark dat hoort bij deze view.
+     */
     public CarParkView(CarPark model) {
         super(model);
         this.size = new Dimension(800, 330);
 
     }
-
-
-
 
 
 
@@ -42,6 +39,10 @@ public class CarParkView extends AbstractView {
             g.drawImage(carParkImage, 0, 0, currentSize.width, currentSize.height, null);
         }
     }
+
+    /**
+     Methode voor het updaten van de view.
+     */
 
     public void updateView() {
         // Create a new car park image if the size has changed.
@@ -73,6 +74,6 @@ public class CarParkView extends AbstractView {
                 location.getFloor() * 260 + (1 + (int)Math.floor(location.getRow() * 0.5)) * 75 + (location.getRow() % 2) * 20,
                 60 + location.getPlace() * 10,
                 20 - 1,
-                10 - 1); // TODO use dynamic size or constants
+                10 - 1); //
     }
 }

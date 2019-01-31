@@ -3,7 +3,6 @@ import parkeersimulatie.Main.Simulator;
 import parkeersimulatie.logic.*;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
 public class Controller extends AbstractController implements ActionListener {
@@ -25,7 +24,9 @@ public class Controller extends AbstractController implements ActionListener {
     private JButton pause;
 
 
-
+    /**
+        Constructor van AbstractController met het model die bij de controller hoort.
+     */
 
     public Controller(AbstractModel model) {
         super(model);
@@ -79,15 +80,14 @@ public class Controller extends AbstractController implements ActionListener {
         add(exitSpeedField);
         add(start);
         add(pause);
-
-
-
-
-
     }
 
-    private void tickSpeed(){
 
+    /**
+     Methode die de snelheid van de simulatie aanpast
+     Verkeerde input wordt afgehandeld met een try catch
+     */
+    private void tickSpeed(){
         try{
             int speed = Integer.parseInt(tickField.getText());
             if(speed >= 0) {
@@ -97,20 +97,30 @@ public class Controller extends AbstractController implements ActionListener {
                         "Please enter a positive number.");
             }
         } catch (NumberFormatException e){
-
             JOptionPane.showMessageDialog(frame,
                     "Please enter a number.");
-
         }
     }
 
+    /**
+     Methode die de simulatie laat runnen
+     */
     private void startPressed() {
         Simulator.running = true;
     }
+
+    /**
+     Methode die de simulatie laat pauzeren
+     */
     private void pausePressed() {
         Simulator.running = false;
     }
 
+
+    /**
+        Methode die de snelheid veranderd van de mensen die de parkeergarage inrijden.
+        Verkeerde input wordt afgevangen met een try catch
+     */
     private void enterSpeed(){
         try{
             int i = Integer.parseInt(enterSpeedField.getText());
@@ -127,6 +137,12 @@ public class Controller extends AbstractController implements ActionListener {
 
         }
     }
+
+
+    /**
+     Methode die de snelheid veranderd van de mensen die betalen in de parkeergarage.
+     Verkeerde input wordt afgevangen met een try catch
+     */
     private void paymentSpeed(){
         try{
             int i = Integer.parseInt(paymentSpeedField.getText());
@@ -143,6 +159,12 @@ public class Controller extends AbstractController implements ActionListener {
 
         }
     }
+
+
+    /**
+     Methode die de snelheid van de mensen die uit de parkeergarage willen gaan aanpast.
+     Verkeerde input wordt afgevangen met een try catch
+     */
     private void exitSpeed(){
         try{
             int i = Integer.parseInt(exitSpeedField.getText());
@@ -160,8 +182,13 @@ public class Controller extends AbstractController implements ActionListener {
         }
     }
 
+    /**
+     Methode die de events afvangt.
+     De source van het event wordt gecontroleerd met de verschillende ActionEvents
+     Daarna wordt de desbetreffende functie uitgevoert.
+     */
 
-
+    // Vangt de eventen af en voert een functie uit bij het desbetreffende event
     public void actionPerformed(ActionEvent event){
         if(event.getSource() == tickField){
             this.tickSpeed();
@@ -182,9 +209,5 @@ public class Controller extends AbstractController implements ActionListener {
             this.exitSpeed();
         }
     }
-
-
-
-
 
 }

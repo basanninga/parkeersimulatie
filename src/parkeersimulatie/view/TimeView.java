@@ -18,6 +18,12 @@ public class TimeView extends AbstractView {
     private String dayText;
     private String clockText;
 
+
+    /**
+     *  Constructor van TimeView met een model van AbstractModel
+
+     *  @param model AbstractModel dat hoort bij deze view.
+     */
     public TimeView(AbstractModel model) {
         super(model);
 
@@ -43,6 +49,9 @@ public class TimeView extends AbstractView {
 
     }
 
+    /**
+     Methode voor het updaten van de view.
+     */
     @Override
     public void updateView() {
 

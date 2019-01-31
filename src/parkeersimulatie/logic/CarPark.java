@@ -1,13 +1,9 @@
 package parkeersimulatie.logic;
 
-
-import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
 public final class CarPark extends AbstractModel {
-
-
 
     private int numberOfFloors;
     private int numberOfRows;
@@ -28,8 +24,6 @@ public final class CarPark extends AbstractModel {
     private CarQueue paymentCarQueue;
     private CarQueue exitCarQueue;
 
-
-
     int weekDayArrivals = 0; // average number of arriving cars per hour
     int weekendArrivals = 0; // average number of arriving cars per hour
     int weekDayPassArrivals = 0; // average number of arriving cars per hour
@@ -42,12 +36,15 @@ public final class CarPark extends AbstractModel {
     private int adhocCarsPass;
     private int passCar;
 
+
+    /**
+     *
+     Constructor van CarPark
+     @param numberOfFloors, numberOfRows, numberOfPlaces en time
+     */
     public CarPark (int numberOfFloors, int numberOfRows, int numberOfPlaces, Time time){
 
-
-
         this.time = time;
-
 
         this.numberOfFloors = numberOfFloors;
         this.numberOfRows = numberOfRows;
@@ -60,21 +57,37 @@ public final class CarPark extends AbstractModel {
         paymentCarQueue = new CarQueue();
         exitCarQueue = new CarQueue();
 
-
     }
 
+    /**
+     *   Zet snelheid van inkomende auto's
+     * @param i Integer
+     */
     public static void setEnterSpeed(int i){
         enterSpeed = i;
     }
 
+    /**
+     *   Zet snelheid van betalende klanten
+     * @param i Integer
+     */
     public static void setPaymentSpeed(int i){
         paymentSpeed = i;
     }
 
+    /**
+     *   Pakt de autos van een bepaalde locatie
+     @param i Integer
+     */
     public static void setExitSpeed(int i){
         exitSpeed = i;
     }
 
+
+    /**
+     *   Pakt de autos van een bepaalde locatie
+     @param location Object Location
+     */
     public Car getCarAt(Location location) {
         if (!locationIsValid(location)) {
             return null;
@@ -82,6 +95,10 @@ public final class CarPark extends AbstractModel {
         return cars[location.getFloor()][location.getRow()][location.getPlace()];
     }
 
+    /**
+     * Zet een car op een locatie
+     * @param location, car
+     */
     public boolean setCarAt(Location location, Car car) {
         if (!locationIsValid(location)) {
             return false;
@@ -96,21 +113,34 @@ public final class CarPark extends AbstractModel {
         return false;
     }
 
+
+    /**
+     *   @return De lengte van de rij bij de ingang
+     */
     public int getEntranceCarQueue(){
 
         return entranceCarQueue.carsInQueue();
     }
 
+    /**
+     *   @return De lengte van de rij bij de betaalautomaat
+     */
     public int getPaymentCarQueue(){
 
         return paymentCarQueue.carsInQueue();
     }
 
+    /**
+     *   @return De lengte van de rij bij de uitgang
+     */
     public int getExitCarQueue(){
 
         return exitCarQueue.carsInQueue();
     }
 
+    /**
+     *   @return De lengte van de rij bij de ingang
+     */
     public int getEntrancePassCarQueue(){
         return entrancePassQueue.carsInQueue();
     }

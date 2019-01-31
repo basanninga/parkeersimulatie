@@ -11,9 +11,6 @@ public abstract class Car extends AbstractModel {
     private boolean isPaying;
     private boolean hasToPay;
 
-    /**
-     * Constructor for objects of class Car
-     */
     public Car() {
         this.stayMinutes = minutesLeft;
 

@@ -4,7 +4,6 @@ import parkeersimulatie.logic.AbstractModel;
 import parkeersimulatie.logic.CarPark;
 
 import javax.swing.*;
-import java.util.Objects;
 
 public class OccupationView extends AbstractView {
 
@@ -15,9 +14,9 @@ public class OccupationView extends AbstractView {
     private JLabel aantalParking;
 
     /**
-     * Constructor of AbstractView that expects a model belonging to this view.
-     *
-     * @param model AbstractModel that belongs to this view.
+     *  Constructor van OccupationView met een model van AbstractModel
+
+     *  @param model AbstractModel dat hoort bij deze view.
      */
 
     public OccupationView(AbstractModel model) {
@@ -28,8 +27,8 @@ public class OccupationView extends AbstractView {
         this.adhocCarsPass = carPark.getAdhocCarsPass();
         this.parkingCarsPass = carPark.getPassCar();
 
-        this.aantalAdhoc = new JLabel("Aantal bezoekers: ");
-        this.aantalParking = new JLabel("Aantal pass bezoekers: ");
+        this.aantalAdhoc = new JLabel("Aantal bezoekers: 0");
+        this.aantalParking = new JLabel("Aantal pass bezoekers: 0");
 
 
         aantalAdhoc.setBounds(10,30,400,20);
@@ -39,7 +38,9 @@ public class OccupationView extends AbstractView {
         this.add(aantalParking);
 
     }
-
+    /**
+     Methode voor het updaten van de view.
+     */
     @Override
     public void updateView() {
 

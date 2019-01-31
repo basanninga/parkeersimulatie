@@ -1,7 +1,5 @@
 package parkeersimulatie.logic;
 
-
-
 import parkeersimulatie.view.AbstractView;
 
 import java.util.ArrayList;

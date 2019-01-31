@@ -7,8 +7,11 @@ public class Location extends AbstractModel {
     private int row;
     private int place;
 
-    /**
-     * Constructor for objects of class Location
+
+     /**
+      ** Constructor Location
+      *  Zet de parameters naar de lokale variabelen
+      * @param floor, row, place
      */
     public Location(int floor, int row, int place) {
         this.floor = floor;
@@ -16,9 +19,12 @@ public class Location extends AbstractModel {
         this.place = place;
     }
 
-    /**
-     * Implement content equality.
+
+     /**
+      * Methode die kijkt of het object een instance is van location
+      * @param obj van Object
      */
+
     public boolean equals(Object obj) {
         if (obj instanceof Location) {
             Location other = (Location) obj;
@@ -28,42 +34,37 @@ public class Location extends AbstractModel {
         }
     }
 
+
     /**
-     * Return a string of the form floor,row,place.
-     *
-     * @return A string representation of the location.
-     */
+     *@return de vloer, row en place als string.
+     * */
     public String toString() {
         return floor + "," + row + "," + place;
     }
 
     /**
-     * Use the 10 bits for each of the floor, row and place
-     * values. Except for very big car parks, this should give
-     * a unique hash code for each (floor, row, place) tupel.
-     *
-     * @return A hashcode for the location.
-     */
+     *@return de plaatsen
+     * */
     public int hashCode() {
         return (floor << 20) + (row << 10) + place;
     }
 
     /**
-     * @return The floor.
-     */
+     *@return de vloer
+     * */
     public int getFloor() {
         return floor;
     }
 
     /**
-     * @return The row.
-     */
+     *@return de rij
+     * */
     public int getRow() {
         return row;
     }
 
     /**
-     * @return The place.
+     * @return de plaats
      */
     public int getPlace() {
         return place;

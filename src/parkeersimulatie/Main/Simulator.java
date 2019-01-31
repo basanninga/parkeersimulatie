@@ -2,7 +2,6 @@ package parkeersimulatie.Main;
 
 import parkeersimulatie.controller.AbstractController;
 import parkeersimulatie.controller.Controller;
-import parkeersimulatie.logic.Car;
 import parkeersimulatie.logic.Time;
 import parkeersimulatie.logic.CarPark;
 import parkeersimulatie.view.*;
@@ -89,25 +88,13 @@ public class Simulator extends JFrame{
                 e.printStackTrace();
             }
         }
-
-
-
-        //simulatorController = new CarQueueController(this);
     }
-
-    /*public void run() {
-        while (running) {
-            tick();
-        }
-    }*/
 
     private void tick() {
         time.advanceTime();
         carPark.setArrivals();
         carPark.handleExit();
         carPark.updateViews();
-        // Pause.
-
         carPark.handleEntrance();
     }
 

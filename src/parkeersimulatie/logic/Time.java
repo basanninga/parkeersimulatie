@@ -1,9 +1,5 @@
 package parkeersimulatie.logic;
 
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Objects;
 
 public class Time extends AbstractModel {
@@ -14,26 +10,47 @@ public class Time extends AbstractModel {
 
     private int runningDay;
 
+
+    /**
+     Constructor voor tijd.
+     */
     public Time() {
 
     }
 
+
+    /**
+     * Return int dag
+     *
+     * @return dag
+     */
     public int getDay() {
         return day;
     }
 
 
 
+    /**
+     *
+     * @return huidige dag
+     */
     public int getRunningDay(){
         return runningDay;
     }
 
+    /**
+     *
+     * @return huidige uur
+     */
     public int getHour() {
         return hour;
     }
 
+
+    /**
+     Methode die de tijd voortzet.
+     */
     public void advanceTime() {
-        // Advance the time by one minute.
         minute++;
         while (minute > 59) {
             minute -= 60;
@@ -47,13 +64,12 @@ public class Time extends AbstractModel {
         while (day > 6) {
             day -= 7;
         }
-
-
         System.out.println(day + " " + hour + ":" + minute);
-
-
     }
 
+    /**
+     Methode voor het ophalen van de tijd.
+     */
     public String getClock(){
         String hourString = Objects.toString(hour);
         String miniuteString = Objects.toString(minute);
@@ -68,6 +84,9 @@ public class Time extends AbstractModel {
         return hourString + ":" + miniuteString;
     }
 
+    /**
+     Methode voor het ophalen van de huidige dag.
+     */
     public String getDayString(){
         String dayString = "";
         switch (day){
