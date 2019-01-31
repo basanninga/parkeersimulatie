@@ -40,8 +40,8 @@ public class Controller extends AbstractController implements ActionListener {
         tickLabel.setBounds(65,50,200,20);
         tickField.setBounds(10, 50, 50, 20);
 
-        start.setBounds(500, 60, 100, 20);
-        pause.setBounds(800, 60, 100, 20);
+        start.setBounds(500, 110, 100, 20);
+        pause.setBounds(800, 110, 100, 20);
 
         add(tickLabel);
         add(tickField);

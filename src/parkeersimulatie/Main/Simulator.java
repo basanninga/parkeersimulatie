@@ -64,7 +64,7 @@ public class Simulator extends JFrame{
 
 
 
-        controller.setBounds(30,320,910,90);
+        controller.setBounds(30,320,910,200);
 
         statsView.setBorder(BorderFactory.createLineBorder(Color.black));
         timeView.setBorder(BorderFactory.createLineBorder(Color.black));
