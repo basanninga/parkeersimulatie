@@ -48,6 +48,7 @@ public class Time extends AbstractModel {
             day -= 7;
         }
 
+
         System.out.println(day + " " + hour + ":" + minute);
 
 

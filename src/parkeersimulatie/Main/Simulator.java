@@ -26,6 +26,8 @@ public class Simulator extends JFrame{
 
     private AbstractController controller;
 
+    public static boolean running;
+
 
     public static int tickPause = 100;
 
@@ -68,17 +70,27 @@ public class Simulator extends JFrame{
 
         carParkView.updateView();
 
+        while (true) {
+            if(running){
+                tick();
+            }
+            try {
+                Thread.sleep(tickPause);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
 
 
 
         //simulatorController = new CarQueueController(this);
     }
 
-    public void run() {
-        while (true) {
+    /*public void run() {
+        while (running) {
             tick();
         }
-    }
+    }*/
 
     private void tick() {
         time.advanceTime();
@@ -86,11 +98,7 @@ public class Simulator extends JFrame{
         carPark.handleExit();
         carPark.updateViews();
         // Pause.
-        try {
-            Thread.sleep(tickPause);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
         carPark.handleEntrance();
     }
 
