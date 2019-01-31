@@ -43,9 +43,9 @@ public class TimeView extends AbstractView {
         this.clockLabel = new JLabel("Tijd:");
         this.runningDaysLabel = new JLabel("Dagen:");
 
-        this.day.setBounds(50,10,100,20);
-        this.clock.setBounds(50,25,50,20);
-        this.runningDays.setBounds(50,50,50,20);
+        this.day.setBounds(60,10,100,20);
+        this.clock.setBounds(60,25,50,20);
+        this.runningDays.setBounds(60,50,50,20);
 
         this.dayLabel.setBounds(10,10,50,20);
         this.clockLabel.setBounds(10,25,50,20);
