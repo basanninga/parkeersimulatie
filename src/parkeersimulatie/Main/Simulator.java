@@ -21,6 +21,7 @@ public class Simulator extends JFrame{
     private AbstractView statsView;
     private AbstractView timeView;
     private AbstractView occupationView;
+    private AbstractView carQueueView;
 
 
     private AbstractController controller;
@@ -38,6 +39,7 @@ public class Simulator extends JFrame{
         this.statsView = new StatsView(carPark);
         this.timeView = new TimeView(carPark);
         this.occupationView = new OccupationView(carPark);
+        this.carQueueView = new CarQueueView(carPark);
 
 
         this.controller = new Controller(carPark);
@@ -50,13 +52,15 @@ public class Simulator extends JFrame{
         SCREEN.getContentPane().add(statsView);
         SCREEN.getContentPane().add(timeView);
         SCREEN.getContentPane().add(occupationView);
+        SCREEN.getContentPane().add(carQueueView);
 
         SCREEN.getContentPane().add(controller);
 
-        carParkView.setBounds(260,30,800,330);
+        carParkView.setBounds(260,90,800,330);
         statsView.setBounds(30,200,150,120);
         timeView.setBounds(1100,200,150,120);
         occupationView.setBounds(1100,400,250,120);
+        carQueueView.setBounds(10, 10, 1200,40);
 
 
 
@@ -65,6 +69,7 @@ public class Simulator extends JFrame{
         statsView.setBorder(BorderFactory.createLineBorder(Color.black));
         timeView.setBorder(BorderFactory.createLineBorder(Color.black));
         occupationView.setBorder(BorderFactory.createLineBorder(Color.black));
+        carQueueView.setBorder(BorderFactory.createLineBorder(Color.black));
 
         SCREEN.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
