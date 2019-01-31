@@ -110,9 +110,55 @@ public class Controller extends AbstractController implements ActionListener {
     private void pausePressed() {
         Simulator.running = false;
     }
-    private void enterSpeed(){CarPark.setEnterSpeed(Integer.parseInt(enterSpeedField.getText()));}
-    private void paymentSpeed(){CarPark.setPaymentSpeed(Integer.parseInt(paymentSpeedField.getText()));}
-    private void exitSpeed(){CarPark.setExitSpeed(Integer.parseInt(exitSpeedField.getText()));}
+
+    private void enterSpeed(){
+        try{
+            int i = Integer.parseInt(enterSpeedField.getText());
+            if(i >= 0) {
+                CarPark.setEnterSpeed(i);
+            } else{
+                JOptionPane.showMessageDialog(frame,
+                        "Please enter a positive number.");
+            }
+        } catch (NumberFormatException e){
+
+            JOptionPane.showMessageDialog(frame,
+                    "Please enter a number.");
+
+        }
+    }
+    private void paymentSpeed(){
+        try{
+            int i = Integer.parseInt(paymentSpeedField.getText());
+            if(i >= 0) {
+                CarPark.setPaymentSpeed(i);
+            } else{
+                JOptionPane.showMessageDialog(frame,
+                        "Please enter a positive number.");
+            }
+        } catch (NumberFormatException e){
+
+            JOptionPane.showMessageDialog(frame,
+                    "Please enter a number.");
+
+        }
+    }
+    private void exitSpeed(){
+        try{
+            int i = Integer.parseInt(exitSpeedField.getText());
+            if(i >= 0) {
+                CarPark.setExitSpeed(i);
+            } else{
+                JOptionPane.showMessageDialog(frame,
+                        "Please enter a positive number.");
+            }
+        } catch (NumberFormatException e){
+
+            JOptionPane.showMessageDialog(frame,
+                    "Please enter a number.");
+
+        }
+    }
 
 
 
