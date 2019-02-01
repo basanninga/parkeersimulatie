@@ -256,6 +256,9 @@ public final class CarPark extends AbstractModel {
         return null;
     }
 
+    /**
+     *   Haalt een minuut van de auto af
+     */
     public void tick() {
         for (int floor = 0; floor < getNumberOfFloors(); floor++) {
             for (int row = 0; row < getNumberOfRows(); row++) {
@@ -270,6 +273,11 @@ public final class CarPark extends AbstractModel {
         }
     }
 
+    /**
+     *   @param location
+     *      Kijkt of de locatie bruikbaar is
+     *   @return boolean
+     */
     private boolean locationIsValid(Location location) {
         int floor = location.getFloor();
         int row = location.getRow();
@@ -277,8 +285,10 @@ public final class CarPark extends AbstractModel {
         return floor >= 0 && floor < numberOfFloors && row >= 0 && row <= numberOfRows && place >= 0 && place <= numberOfPlaces;
     }
 
+    /**
+     *   Stelt hier de drukte in per dag op bepaalde tijdstippen
+     */
     public void setArrivals() {
-        //Het wordt druk
         if (time.getHour() > 12 && time.getHour() < 18) {
             switch (time.getDay()) {
                 case 0:
@@ -318,7 +328,6 @@ public final class CarPark extends AbstractModel {
                     break;
 
             }
-            //Het wordt rustig
         } else {
             switch (time.getDay()) {
                 case 0:
@@ -362,6 +371,9 @@ public final class CarPark extends AbstractModel {
     }
 
 
+    /**
+     *   Zorgt dat een auto binnenkomt
+     */
     public void handleEntrance() {
         carsArriving();
         carsEntering(entrancePassQueue);
@@ -369,18 +381,26 @@ public final class CarPark extends AbstractModel {
         carsEntering(entranceReservationQueue);
     }
 
+    /**
+     *   Zorgt dat een auto weggaat
+     */
     public void handleExit() {
         carsReadyToLeave();
         carsPaying();
         carsLeaving();
     }
 
+    /**
+     *   Update de view
+     */
     public void updateViews() {
         tick();
-        // Update the car park view.
         super.notifyViews();
     }
 
+    /**
+     *   Hij maakt een random aantal auto's aan per type auto
+     */
     private void carsArriving() {
         int numberOfCars = getNumberOfCars(weekDayArrivals, weekendArrivals);
         addArrivingCars(numberOfCars, AD_HOC);
@@ -391,10 +411,12 @@ public final class CarPark extends AbstractModel {
 
     }
 
+    /**
+     * @param queue
+     * Geeft de auto die binnenkomt een parkeerplek
+     */
     private void carsEntering(CarQueue queue) {
         int i = 0;
-        // Remove car from the front of the queue and assign to a parking space.
-
 
         if(queue.carsInQueue() >0 ) {
 
@@ -425,10 +447,10 @@ public final class CarPark extends AbstractModel {
         }
     }
 
-
-
+    /**
+     *   Zet de auto's die weggaan in de payment queue
+     */
     private void carsReadyToLeave() {
-        // Add leaving cars to the payment queue.
         Car car = getFirstLeavingCar();
         while (car != null) {
             if (car.getHasToPay()) {
@@ -441,8 +463,10 @@ public final class CarPark extends AbstractModel {
         }
     }
 
+    /**
+     *   Laat de auto's betalen
+     **/
     private void carsPaying() {
-        // Let cars pay.
         int i = 0;
         while (paymentCarQueue.carsInQueue() > 0 && i < paymentSpeed) {
             Car car = paymentCarQueue.removeCar();
@@ -452,8 +476,10 @@ public final class CarPark extends AbstractModel {
         }
     }
 
+    /**
+     *   Laat auto's weggaan
+     */
     private void carsLeaving() {
-        // Let cars leave.
         int i = 0;
         while (exitCarQueue.carsInQueue() > 0 && i < exitSpeed) {
             Car car = exitCarQueue.removeCar();
@@ -471,22 +497,28 @@ public final class CarPark extends AbstractModel {
         }
     }
 
+    /**
+     * @param weekDay, weekend
+     *  Pakt een gemiddelde aantal auto's
+     * @return int
+     */
     private int getNumberOfCars(int weekDay, int weekend) {
         Random random = new Random();
 
-        // Get the average number of cars that arrive per hour.
         int averageNumberOfCarsPerHour = time.getDay() < 5
                 ? weekDay
                 : weekend;
 
-        // Calculate the number of cars that arrive this minute.
         double standardDeviation = averageNumberOfCarsPerHour * 0.3;
         double numberOfCarsPerHour = averageNumberOfCarsPerHour + random.nextGaussian() * standardDeviation;
         return (int) Math.round(numberOfCarsPerHour / 60);
     }
 
+    /**
+     * @param numberOfCars, type
+     *   Voegt auto's toe aan de queue
+     */
     private void addArrivingCars(int numberOfCars, String type) {
-        // Add the cars to the back of the queue.
         switch (type) {
             case AD_HOC:
                 for (int i = 0; i < numberOfCars; i++) {
@@ -509,60 +541,117 @@ public final class CarPark extends AbstractModel {
         }
     }
 
+    /**
+     * @param car
+     * Verwijderd een car van een locatie
+     */
     private void carLeavesSpot(Car car) {
         removeCarAt(car.getLocation());
         exitCarQueue.addCar(car);
     }
 
-
+    /**
+     * Geeft nummer of floors terug
+     * @return int
+     */
     public int getNumberOfFloors() {
         return numberOfFloors;
     }
 
+    /**
+     * Geeft nummer of rows terug
+     * @return int
+     */
     public int getNumberOfRows() {
         return numberOfRows;
     }
 
+    /**
+     * Geeft nummer of places terug
+     * @return int
+     */
     public int getNumberOfPlaces() {
         return numberOfPlaces;
     }
 
+    /**
+     * Geeft nummer of open spots terug
+     * @return int
+     */
     public int getNumberOfOpenSpots() {
         return numberOfOpenSpots;
     }
 
+    /**
+     * Geeft nummer of passNumber van openspots terug
+     * @return int
+     */
     public int getPassNumberOfOpenSpots() {
         return passnumberOfOpenSpots;
     }
 
+    /**
+     * Geeft de tijd terug
+     * @return Time
+     */
     public Time getTime() {
         return time;
     }
 
+    /**
+     * @param totalMinutes
+     * Set de totale minuten
+     * @return int
+     */
     public static void setTotalMinutes(int totalMinutes) {
         CarPark.totalMinutes = totalMinutes;
     }
 
+    /**
+     * Geeft totale minuten terug
+     * @return int
+     */
     public int getTotalMinutes() {
         return totalMinutes;
     }
 
+    /**
+     * @param stayMinutes
+     * Zet de minuten die je blijft staan
+     * @return int
+     */
     public static void setStayMinutes(int stayMinutes) {
         CarPark.stayMinutes = stayMinutes;
     }
 
+    /**
+     * Geeft stayMinutes terug
+     * @return int
+     */
     public int getStayMinutes() {
         return stayMinutes;
     }
 
+    /**
+     * Geeft adHocsCarsPass terug
+     * @return int
+     */
     public int getAdhocCarsPass() {
         return adhocCarsPass;
     }
 
+    /**
+     * Geeft pass auto's terug
+     * @return int
+     */
     public int getPassCar() {
         return passCar;
     }
 
+    /**
+     * Geeft reservation cars terug
+     * @return int
+     */
     public int getReservationCar() {
         return reservation;
     }
