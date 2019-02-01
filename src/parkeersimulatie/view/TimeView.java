@@ -6,6 +6,13 @@ import parkeersimulatie.logic.Time;
 import javax.swing.*;
 import java.util.Objects;
 
+
+/**
+ * Class TimeView
+ *
+ * @author Bas Anninga, Victor Vrancianu, Jens Slauerhoff
+ * @version 1.0
+ */
 public class TimeView extends AbstractView {
 
     private Time time;

@@ -5,6 +5,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
 
+
+/**
+ * Class CarQueueView
+ *
+ * @author Bas Anninga, Victor Vrancianu, Jens Slauerhoff
+ * @version 1.0
+ */
 public class CarQueueView extends AbstractView {
 
     private JLabel queueLength;

@@ -6,6 +6,13 @@ import parkeersimulatie.logic.Time;
 
 import javax.swing.*;
 
+
+/**
+ * Class StatsView
+ *
+ * @author Bas Anninga, Victor Vrancianu, Jens Slauerhoff
+ * @version 1.0
+ */
 public class StatsView extends AbstractView {
 
     private Time time;

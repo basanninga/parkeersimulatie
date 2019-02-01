@@ -6,6 +6,13 @@ import parkeersimulatie.logic.Location;
 
 import java.awt.*;
 
+
+/**
+ * Class CarParkView
+ *
+ * @author Bas Anninga, Victor Vrancianu, Jens Slauerhoff
+ * @version 1.0
+ */
 public class CarParkView extends AbstractView {
 
     private Dimension size;

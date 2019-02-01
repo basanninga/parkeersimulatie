@@ -5,6 +5,13 @@ import parkeersimulatie.logic.CarPark;
 
 import javax.swing.*;
 
+
+/**
+ * Class OccupationView
+ *
+ * @author Bas Anninga, Victor Vrancianu, Jens Slauerhoff
+ * @version 1.0
+ */
 public class OccupationView extends AbstractView {
 
     private int adhocCarsPass;

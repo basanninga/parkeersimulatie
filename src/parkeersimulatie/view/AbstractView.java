@@ -6,10 +6,15 @@ import parkeersimulatie.logic.AbstractModel;
 
 import javax.swing.*;
 
+/**
+ * Class AbstractView
+ *
+ * @author Bas Anninga, Victor Vrancianu, Jens Slauerhoff
+ * @version 1.0
+ */
 
 public class AbstractView extends JPanel
 {
-    // Alle views hebben een model
     protected AbstractModel model;
 
     /**
@@ -21,7 +26,6 @@ public class AbstractView extends JPanel
         this.model = model;
         model.addView(this);
 
-        // we use absolute positioning so we can set the layout to null
         setLayout(null);
     }
 
