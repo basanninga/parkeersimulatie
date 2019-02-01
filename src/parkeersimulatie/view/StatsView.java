@@ -52,10 +52,10 @@ public class StatsView extends AbstractView {
 
         this.parkPrice = 250;
 
-        this.currentText = new JLabel("Current: ");
-        this.expectedText = new JLabel("Expected: ");
-        this.yesterdayText = new JLabel("Yesterday: ");
-        this.totalText = new JLabel("Total: ");
+        this.currentText = new JLabel("Huidig: ");
+        this.expectedText = new JLabel("Verwacht: ");
+        this.yesterdayText = new JLabel("Gisteren: ");
+        this.totalText = new JLabel("Totaal: ");
 
         this.current = new JLabel("\u20ac" + "0");
         this.expected = new JLabel("\u20ac" + "0");
