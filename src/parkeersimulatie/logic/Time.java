@@ -7,6 +7,7 @@ public class Time extends AbstractModel {
     private int day = 0;
     private int hour = 0;
     private int minute = 0;
+    private int week = 0;
 
     private int runningDay;
 
@@ -63,8 +64,9 @@ public class Time extends AbstractModel {
         }
         while (day > 6) {
             day -= 7;
+            week++;
         }
-        System.out.println(day + " " + hour + ":" + minute);
+
     }
 
     /**
@@ -108,5 +110,9 @@ public class Time extends AbstractModel {
                 break;
         }
         return dayString;
+    }
+
+    public int getWeek(){
+        return week;
     }
 }
