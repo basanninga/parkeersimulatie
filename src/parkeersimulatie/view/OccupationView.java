@@ -71,7 +71,7 @@ public class OccupationView extends AbstractView {
 
         aantalAdhoc.setText("Aantal bezoekers: " + (adhocCarsPass - carPark.getEntranceCarQueue()));
         aantalParking.setText("Aantal pass bezoekers: " + (parkingCarsPass - carPark.getEntrancePassCarQueue()));
-        aantalreservationCars.setText("Aantal gereserveerde bezoekers: " + (reservationCarsPass - carPark.getEntrancePassCarQueue()));
+        aantalreservationCars.setText("Aantal gereserveerde bezoekers: " + (reservationCarsPass - carPark.getEntranceReservationQueue()));
 
         setVisible(true);
         super.updateView();

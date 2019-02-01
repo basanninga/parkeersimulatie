@@ -13,16 +13,27 @@ import java.awt.*;
  */
 public class ParkingPassCar extends Car {
     private static final Color COLOR = Color.blue;
+    private int stayMinutes;
 
     /**
      Constructor voor de ParkingPassCar.
      */
     public ParkingPassCar() {
         Random random = new Random();
-        int stayMinutes = (int) (15 + random.nextFloat() * 3 * 60);
+        stayMinutes = (int) (15 + random.nextFloat() * 3 * 60);
         this.setMinutesLeft(stayMinutes);
-        this.setHasToPay(false);
+        this.setHasToPay(true);
     }
+
+    /**
+     Geeft de minuten terug hoeveel minuten de passcar blijft
+     @return int
+     */
+    public int getStayMinutes(){
+        return stayMinutes;
+    }
+
+
 
     /**
      * Return kleur van Object Color
