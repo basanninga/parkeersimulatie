@@ -48,7 +48,7 @@ public class TimeView extends AbstractView {
 
         time = carPark.getTime();
 
-        this.day = new JLabel("maandag");
+        this.day = new JLabel("Maandag");
         this.clock = new JLabel("00:00");
         this.runningDays = new JLabel("0");
         this.week = new JLabel("0");
@@ -56,7 +56,7 @@ public class TimeView extends AbstractView {
         this.dayLabel = new JLabel("Dag:");
         this.clockLabel = new JLabel("Tijd:");
         this.runningDaysLabel = new JLabel("Dagen:");
-        this.weekLabel = new JLabel("weken");
+        this.weekLabel = new JLabel("Weken");
 
         this.day.setBounds(60,10,100,20);
         this.clock.setBounds(60,25,50,20);

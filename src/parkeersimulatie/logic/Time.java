@@ -101,19 +101,19 @@ public class Time extends AbstractModel {
     public String getDayString(){
         String dayString = "";
         switch (day){
-            case 0: dayString = "maandag";
+            case 0: dayString = "Maandag";
                     break;
-            case 1: dayString = "disndag";
+            case 1: dayString = "Disndag";
                 break;
-            case 2: dayString = "woensdag";
+            case 2: dayString = "Woensdag";
                 break;
-            case 3: dayString = "donderdag";
+            case 3: dayString = "Donderdag";
                 break;
-            case 4: dayString = "vrijdag";
+            case 4: dayString = "Vrijdag";
                 break;
-            case 5: dayString = "zaterdag";
+            case 5: dayString = "Zaterdag";
                 break;
-            case 6: dayString = "zondag";
+            case 6: dayString = "Zondag";
                 break;
         }
         return dayString;

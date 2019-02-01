@@ -4,6 +4,7 @@ import parkeersimulatie.logic.AbstractModel;
 import parkeersimulatie.logic.CarPark;
 
 import javax.swing.*;
+import java.awt.*;
 
 
 /**
@@ -40,12 +41,16 @@ public class OccupationView extends AbstractView {
 
         this.aantalAdhoc = new JLabel("Aantal bezoekers: 0");
         this.aantalParking = new JLabel("Aantal pass bezoekers: 0");
-        this.aantalreservationCars = new JLabel("Aantal reservaties: 0");
+        this.aantalreservationCars = new JLabel("Aantal gereserveerde bezoekers: 0");
 
 
         aantalAdhoc.setBounds(10,30,400,20);
         aantalParking.setBounds(10,50,400,20);
-        aantalreservationCars.setBounds(10,80,400,20);
+        aantalreservationCars.setBounds(10,70,400,20);
+
+        aantalAdhoc.setForeground(Color.RED);
+        aantalParking.setForeground(Color.BLUE);
+        aantalreservationCars.setForeground(Color.GREEN);
 
         this.add(aantalAdhoc);
         this.add(aantalParking);
