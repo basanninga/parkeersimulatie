@@ -5,7 +5,12 @@ import parkeersimulatie.view.AbstractView;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Class AbstractModel
+ *
+ * @author Bas Anninga, Victor Vrancianu, Jens Slauerhoff
+ * @version 1.0
+ */
 public abstract class AbstractModel
 {
     private List<AbstractView> views;

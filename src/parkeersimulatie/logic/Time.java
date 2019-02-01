@@ -2,6 +2,13 @@ package parkeersimulatie.logic;
 
 import java.util.Objects;
 
+
+/**
+ * Class Time
+ *
+ * @author Bas Anninga, Victor Vrancianu, Jens Slauerhoff
+ * @version 1.0
+ */
 public class Time extends AbstractModel {
 
     private int day = 0;

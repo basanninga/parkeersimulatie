@@ -3,6 +3,12 @@ package parkeersimulatie.logic;
 import java.util.Random;
 import java.awt.*;
 
+/**
+ * Class Reservation
+ *
+ * @author Bas Anninga, Victor Vrancianu, Jens Slauerhoff
+ * @version 1.0
+ */
 public class Reservation extends Car {
     private static final Color COLOR = Color.green;
 

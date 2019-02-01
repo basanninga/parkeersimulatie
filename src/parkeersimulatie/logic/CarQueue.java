@@ -1,10 +1,15 @@
 package parkeersimulatie.logic;
 
-
-
 import java.util.LinkedList;
 import java.util.Queue;
 
+
+/**
+ * Class CarQueue
+ *
+ * @author Bas Anninga, Victor Vrancianu, Jens Slauerhoff
+ * @version 1.0
+ */
 public class CarQueue extends AbstractModel {
     private Queue<Car> queue = new LinkedList<>();
 

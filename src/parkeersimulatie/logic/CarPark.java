@@ -4,6 +4,13 @@ package parkeersimulatie.logic;
 import java.awt.*;
 import java.util.Random;
 
+
+/**
+ * Class CarPark
+ *
+ * @author Bas Anninga, Victor Vrancianu, Jens Slauerhoff
+ * @version 1.0
+ */
 public final class CarPark extends AbstractModel {
 
     private int numberOfFloors;

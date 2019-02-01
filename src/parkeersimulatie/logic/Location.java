@@ -1,6 +1,11 @@
 package parkeersimulatie.logic;
 
-
+/**
+ * Class Location
+ *
+ * @author Bas Anninga, Victor Vrancianu, Jens Slauerhoff
+ * @version 1.0
+ */
 public class Location extends AbstractModel {
 
     private int floor;

@@ -5,6 +5,13 @@ import parkeersimulatie.logic.*;
 import javax.swing.*;
 import java.awt.event.*;
 
+
+/**
+ * Class Controller
+ *
+ * @author Bas Anninga, Victor Vrancianu, Jens Slauerhoff
+ * @version 1.0
+ */
 public class Controller extends AbstractController implements ActionListener {
 
     private JDialog frame;

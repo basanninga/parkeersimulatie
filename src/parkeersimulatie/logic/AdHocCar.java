@@ -4,10 +4,13 @@ import java.util.Random;
 import java.awt.*;
 
 /**
-* In deze klasse wordt een normale auto gemaakt.
+ * Class AbstractView
+   In deze klasse wordt een normale auto gemaakt.
  * hij geeft de auto een bepaalde tijd mee om in de parkeergarage te parkeren.
  * De klasse geeft de auto de kleur rood mee
-* */
+ * @author Bas Anninga, Victor Vrancianu, Jens Slauerhoff
+ * @version 1.0
+ */
 
 public class AdHocCar extends Car {
     private static final Color COLOR = Color.red;

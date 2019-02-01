@@ -3,6 +3,13 @@ package parkeersimulatie.logic;
 
 import java.awt.*;
 
+
+/**
+ * Class Car
+ *
+ * @author Bas Anninga, Victor Vrancianu, Jens Slauerhoff
+ * @version 1.0
+ */
 public abstract class Car extends AbstractModel {
 
     private Location location;

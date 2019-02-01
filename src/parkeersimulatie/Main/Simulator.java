@@ -10,6 +10,12 @@ import parkeersimulatie.view.*;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Class Simulator
+ *
+ * @author Bas Anninga, Victor Vrancianu, Jens Slauerhoff
+ * @version 1.0
+ */
 public class Simulator extends JFrame{
 
     public static final JFrame SCREEN = new JFrame();
