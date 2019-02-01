@@ -20,9 +20,9 @@ public class Time extends AbstractModel {
 
 
     /**
-     * Return int dag
+     * Geeft dag terug
      *
-     * @return dag
+     * @return int
      */
     public int getDay() {
         return day;
@@ -31,8 +31,8 @@ public class Time extends AbstractModel {
 
 
     /**
-     *
-     * @return huidige dag
+     * Geeft huidige dag terug
+     * @return int
      */
     public int getRunningDay(){
         return runningDay;
@@ -69,6 +69,7 @@ public class Time extends AbstractModel {
 
     /**
      Methode voor het ophalen van de tijd.
+     @return String
      */
     public String getClock(){
         String hourString = Objects.toString(hour);
@@ -86,6 +87,7 @@ public class Time extends AbstractModel {
 
     /**
      Methode voor het ophalen van de huidige dag.
+     @return String
      */
     public String getDayString(){
         String dayString = "";

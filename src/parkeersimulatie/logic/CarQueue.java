@@ -9,6 +9,7 @@ public class CarQueue extends AbstractModel {
     private Queue<Car> queue = new LinkedList<>();
 
     /**
+     * @param car
      * Maakt een auto aan
      * @return een boolean
      */

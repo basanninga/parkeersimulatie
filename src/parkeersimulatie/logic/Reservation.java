@@ -8,6 +8,9 @@ public class Reservation extends Car {
 
     private int stayMinutes;
 
+    /**
+     Constructor voor reservation.
+     */
     public Reservation() {
         Random random = new Random();
         stayMinutes = (int) (15 + random.nextFloat() * 3 * 60);
@@ -15,10 +18,18 @@ public class Reservation extends Car {
         this.setHasToPay(true);
     }
 
+    /**
+     Geeft de minuten terug hoeveel minuten de reservatie blijft
+     @return int
+     */
     public int getStayMinutes(){
         return stayMinutes;
     }
 
+    /**
+     Geeft de kleur terug
+     @return COLOR
+     */
     public Color getColor() {
         return COLOR;
     }

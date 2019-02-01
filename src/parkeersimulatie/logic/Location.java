@@ -9,9 +9,9 @@ public class Location extends AbstractModel {
 
 
      /**
-      ** Constructor Location
-      *  Zet de parameters naar de lokale variabelen
       * @param floor, row, place
+      * Constructor Location
+      *  Zet de parameters naar de lokale variabelen
      */
     public Location(int floor, int row, int place) {
         this.floor = floor;
@@ -21,8 +21,8 @@ public class Location extends AbstractModel {
 
 
      /**
+      * @param obj
       * Methode die kijkt of het object een instance is van location
-      * @param obj van Object
      */
 
     public boolean equals(Object obj) {
@@ -36,35 +36,40 @@ public class Location extends AbstractModel {
 
 
     /**
-     *@return de vloer, row en place als string.
+     * Geeft de floor, row en place terug
+     *@return String
      * */
     public String toString() {
         return floor + "," + row + "," + place;
     }
 
     /**
-     *@return de plaatsen
+     * Maakt een hashcode van floor, row en place
+     *@return int
      * */
     public int hashCode() {
         return (floor << 20) + (row << 10) + place;
     }
 
     /**
-     *@return de vloer
+     * Geeft de floor terug
+     *@return int
      * */
     public int getFloor() {
         return floor;
     }
 
     /**
-     *@return de rij
+     * Geeft de row terug
+     *@return int
      * */
     public int getRow() {
         return row;
     }
 
     /**
-     * @return de plaats
+     * Geeft de place terug
+     * @return int
      */
     public int getPlace() {
         return place;

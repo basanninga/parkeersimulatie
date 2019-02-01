@@ -20,7 +20,7 @@ public class ParkingPassCar extends Car {
     /**
      * Return kleur van Object Color
      *
-     * @return Kleur
+     * @return Color
      */
     public Color getColor() {
         return COLOR;

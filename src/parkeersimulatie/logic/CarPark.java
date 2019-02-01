@@ -46,9 +46,9 @@ public final class CarPark extends AbstractModel {
 
 
     /**
+     * @param numberOfFloors, numberOfRows, numberOfPlaces en time
      *
      Constructor van CarPark
-     @param numberOfFloors, numberOfRows, numberOfPlaces en time
      */
     public CarPark (int numberOfFloors, int numberOfRows, int numberOfPlaces, Time time){
 
@@ -72,29 +72,33 @@ public final class CarPark extends AbstractModel {
     }
 
     /**
+     @param i
      *   Zet snelheid van inkomende auto's
-     * @param i Integer
      */
     public static void setEnterSpeed(int i){
         enterSpeed = i;
     }
 
     /**
+     * @param i
      *   Zet snelheid van betalende klanten
-     * @param i Integer
      */
     public static void setPaymentSpeed(int i){
         paymentSpeed = i;
     }
 
+    /**
+     * @param i
+     *   Zet snelheid van uitrijdende klanten
+     */
     public static void setExitSpeed(int i){
         exitSpeed = i;
     }
 
-
     /**
-     *   Pakt de autos van een bepaalde locatie
-     @param location Object Location
+     * @param location Object Location
+     * Pakt de autos van een bepaalde locatie
+     @return Car
      */
     public Car getCarAt(Location location) {
         if (!locationIsValid(location)) {
@@ -104,8 +108,9 @@ public final class CarPark extends AbstractModel {
     }
 
     /**
-     * Zet een car op een locatie
      * @param location, car
+     * Zet een car op een locatie
+     * @return boolean
      */
     public boolean setCarAt(Location location, Car car) {
         if (!locationIsValid(location)) {
@@ -159,10 +164,20 @@ public final class CarPark extends AbstractModel {
         return entrancePassQueue.carsInQueue();
     }
 
+    /**
+     *   De lengte van de rij bij de ingang van
+     *   @return int
+     */
     public int getEntranceReservationQueue(){
         return entranceReservationQueue.carsInQueue();
     }
 
+
+    /**
+     *   @param location
+     *   Verwijderd een auto bij een locatie
+     *   @return car
+     */
     public Car removeCarAt(Location location) {
         if (!locationIsValid(location)) {
             return null;
@@ -183,6 +198,10 @@ public final class CarPark extends AbstractModel {
         return car;
     }
 
+    /**
+     *   Pakt de eerste vrije plek voor abonnementhouders
+     *   @return location
+     */
     public Location getFirstPassFreeLocation() {
 
         for (int floor = 2; floor < getNumberOfFloors(); floor++) {
@@ -199,6 +218,10 @@ public final class CarPark extends AbstractModel {
         return null;
     }
 
+    /**
+     *   Pakt de eerste vrije plek
+     *   @return location
+     */
     public Location getFirstFreeLocation() {
         for (int floor = 0; floor < getNumberOfFloors(); floor++) {
             for (int row = 0; row < getNumberOfRows(); row++) {
@@ -214,7 +237,10 @@ public final class CarPark extends AbstractModel {
     }
 
 
-
+    /**
+     *   Pakt de eerste auto die weg kan die niet betaald heeft
+     *   @return car
+     */
     public Car getFirstLeavingCar() {
         for (int floor = 0; floor < getNumberOfFloors(); floor++) {
             for (int row = 0; row < getNumberOfRows(); row++) {
