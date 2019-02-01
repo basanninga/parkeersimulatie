@@ -20,7 +20,7 @@ public class Time extends AbstractModel {
 
 
     /**
-     * Geeft dag terug
+     * Geeft de dag terug
      *
      * @return int
      */
