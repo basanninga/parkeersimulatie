@@ -59,7 +59,7 @@ public class Simulator extends JFrame{
         statsView.setBounds(30,200,150,120);
         timeView.setBounds(1150,200,150,120);
         occupationView.setBounds(1150,400,250,120);
-        carQueueView.setBounds(100, 10, 1200,40);
+        carQueueView.setBounds(100, 100, 1200,40);
 
 
 
@@ -69,6 +69,7 @@ public class Simulator extends JFrame{
         timeView.setBorder(BorderFactory.createLineBorder(Color.black));
         occupationView.setBorder(BorderFactory.createLineBorder(Color.black));
         carQueueView.setBorder(BorderFactory.createLineBorder(Color.black));
+        
 
         SCREEN.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
